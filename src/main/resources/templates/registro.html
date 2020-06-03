@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Página de Registro</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body class="container">
+	<h1>Página de Registro</h1>
+        <form th:action="@{/registro}" method="post" th:object="${perfil}">
+            <div><label> Nombre de usuario :</label></div> 
+            <div><input type="text" name="nombre"/></div>
+   
+            <div><label> Edad :</label></div> 
+            <div><input type="text" name="edad"/></div>
+            
+            <div><label> Género :</label></div> 
+            <div><input type="text" name="genero"/></div>
+            
+            <div><label> Añade una descripción :</label></div> 
+            <div><input type="text" name="descripcion"/></div>
+            
+            <div><label> Sube una foto :</label></div> 
+            <div><input type="text" name="foto"/></div>
+            
+             <div><label> Password: </label></div>
+            <div><input type="password" name="password"/></div>
+            <div><input type="submit" value="Registrarse"/></div>
+        </form>
+        
+         	<!-- <div th:text="${message}"></div>
+           	<div><a th:href="@{/registro}">Registrar</a></div>
+          <div><a th:href="@{/protected}">Try to go to protected(solo para role User)</a></div>
+           	<div><a th:href="@{/admin}">Try to go to admin(solo para role Admin)</a></div>-->
+        
+    </body>
+</html>
