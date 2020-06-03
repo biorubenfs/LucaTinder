@@ -14,7 +14,7 @@ public class PerfilServiciosImp implements PerfilServicios {
 	private PerfilDAO perfilDAO;
 	
 	@Autowired
-	private PerfilRepositorio perfilRepo;
+	private PerfilRepositorio perfilRepositorio;
 	
 	@Override
 	public void agregarPerfil(Perfil perfil) {
@@ -23,18 +23,19 @@ public class PerfilServiciosImp implements PerfilServicios {
 	
 	@Override
 	public Perfil findByUsername(String nombre) {
-		return perfilRepo.findByUsername(nombre);
+		return perfilRepositorio.findByNombre(nombre);
 	}
 	
 	@Override
 	public Perfil findByPassword(String password) {
-		return perfilRepo.findByUsername(password);
+		return perfilRepositorio.findByPassword(password);
 	}
 	
 	@Override
 	public void salvarPerfil(Perfil perfil) {
-		perfil.setPassword(perfil.getPassword());		
+		perfil.setPassword(perfil.getPassword());
 		perfil.setNombre(perfil.getNombre());
+		perfilRepositorio.save(perfil);
 	}
 
 }

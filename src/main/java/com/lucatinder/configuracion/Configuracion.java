@@ -19,7 +19,7 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private DataSource dataSource;
 	
-	@Value("${select  nombre, password from perfil where nombre=?}")
+	@Value("${spring.queries.users-query}")
 	private String perfilQuery;
 	
 	@Override
@@ -27,7 +27,7 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 		auth
 			.jdbcAuthentication()
 			.usersByUsernameQuery(perfilQuery)
-			.authoritiesByUsernameQuery(perfilQuery)
+			//.authoritiesByUsernameQuery(perfilQuery)
 			.dataSource(dataSource);
 			//No se esta usando realmente porque lo genero desde Servicios
 			//.passwordEncoder();
