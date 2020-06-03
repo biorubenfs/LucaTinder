@@ -1,5 +1,7 @@
 package com.lucatinder.servicios;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,7 @@ import com.lucatinder.modelo.Perfil;
 import com.lucatinder.repositorio.PerfilRepositorio;
 
 @Service
+@Transactional
 public class PerfilServiciosImp implements PerfilServicios {
 
 	@Autowired
