@@ -5,4 +5,5 @@ public class Control {
 	public void hola() {
 		System.out.println("hola mundo");
 	}
+
 }
