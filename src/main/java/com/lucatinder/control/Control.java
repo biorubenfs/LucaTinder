@@ -20,6 +20,8 @@ public class Control {
 		return "AgregarPerfil";
 	}
 	
-	
+	public void hola() {
+		
+	}
 
 }
