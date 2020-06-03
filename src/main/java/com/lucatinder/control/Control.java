@@ -14,6 +14,11 @@ public class Control {
 	@Autowired
 	private PerfilServicios perfilServicios;
 	
+	
+	public Control(PerfilServicios perfilServicios){
+		this.perfilServicios=perfilServicios;
+	}
+	
 	@GetMapping("/agregarPerfil")
 	public String nuevoPerfil(ModelMap model) {
 		model.addAttribute("perfil", new Perfil());
