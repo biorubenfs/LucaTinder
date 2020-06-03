@@ -16,6 +16,7 @@ public class Perfil {
 	private String genero;
 	private String descripcion;
 	private String foto;
+	private String password;
 	
 	@Id
 	@GeneratedValue
@@ -56,7 +57,13 @@ public class Perfil {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	
+		
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -72,6 +79,8 @@ public class Perfil {
 		builder.append(descripcion);
 		builder.append(", foto=");
 		builder.append(foto);
+		builder.append(", password=");
+		builder.append(password);
 		builder.append("]");
 		return builder.toString();
 	}
