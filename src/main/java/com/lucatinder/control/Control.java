@@ -20,8 +20,9 @@ public class Control {
 		return "AgregarPerfil";
 	}
 	
-	public void hola() {
-		
+	@GetMapping("/login")
+	public String loginPage() {
+		return "login";
 	}
 
 }
