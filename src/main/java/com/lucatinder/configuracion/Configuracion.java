@@ -19,18 +19,20 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private DataSource dataSource;
 	
-	@Value("${select  nombre, password from perfil where nombre=?}")
+	@Value("${spring.queries.users-query}")
 	private String perfilQuery;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
+
 			.jdbcAuthentication()
 			.usersByUsernameQuery(perfilQuery)
-			.authoritiesByUsernameQuery(perfilQuery)
+			//.authoritiesByUsernameQuery(perfilQuery)
 			.dataSource(dataSource);
 			//No se esta usando realmente porque lo genero desde Servicios
 			//.passwordEncoder();
+			 
 	}
 	
 	@Override
@@ -41,13 +43,13 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 			.antMatchers("/").permitAll()		
 			.antMatchers("/login").permitAll()
 			.antMatchers("/listado").permitAll()
-			.antMatchers("/registrar").permitAll()
+			.antMatchers("/registro").permitAll()
 			.anyRequest().authenticated()
 				.and()
 			.csrf()
 				.disable()
 				.formLogin().loginPage("/login")
-					//.defaultSuccessUrl("/admin")
+					.defaultSuccessUrl("/admin")
 					.failureUrl("/login?error=true")
 					.usernameParameter("nombre")
 					.passwordParameter("password")

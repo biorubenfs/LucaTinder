@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<title>Pagina de registro</title>
+<title>Inicio de Sesión</title>
 	<meta charset="UTF-8" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
 <body class="container">
-	<h1>Registro</h1>
+	<h1>Login</h1>
         <form th:action="@{/login}" method="post">
             <div><label> Nombre de usuario :</label></div> 
             <div><input type="text" name="nombre"/></div>
@@ -16,8 +16,8 @@
             <div><input type="submit" value="Sign in"/></div>
         </form>
          	<div th:text="${message}"></div>
-           <!--	<div><a th:href="@{/register}">Register</a></div>
-          <div><a th:href="@{/protected}">Try to go to protected(solo para role User)</a></div>
+           	<div><a th:href="@{/registro}">Registrar</a></div>
+          <!--<div><a th:href="@{/protected}">Try to go to protected(solo para role User)</a></div>
            	<div><a th:href="@{/admin}">Try to go to admin(solo para role Admin)</a></div>-->
         <div th:if="${param.error}">
             Login incorrecto.

@@ -7,6 +7,6 @@ import com.lucatinder.modelo.Perfil;
 
 @Repository("perfilRepositorio")
 public interface PerfilRepositorio extends JpaRepository<Perfil, Integer>{
-	Perfil findByUsername(String nombre);
+	Perfil findByNombre(String nombre);
 	Perfil findByPassword(String password);
 }
