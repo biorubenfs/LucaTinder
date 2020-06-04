@@ -22,7 +22,7 @@ public class Control {
 		this.perfilServicios=perfilServicios;
 	}
 
-	@GetMapping("/inicio")
+	@GetMapping("/")
 	public String paginaInicio() {
 		return "/inicio";
 	}
