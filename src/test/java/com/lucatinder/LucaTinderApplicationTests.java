@@ -65,6 +65,7 @@ public class LucaTinderApplicationTests {
         assertThat(dataSource).isNotNull();
         assertThat(perfilServicios).isNotNull();
         assertThat(perfilServicios).isNotNull();
+        assertThat(perfilServicios).isNotNull();
     }
     
 }
