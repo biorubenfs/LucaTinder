@@ -21,6 +21,11 @@ public class Control {
 	public Control(PerfilServicios perfilServicios){
 		this.perfilServicios=perfilServicios;
 	}
+
+	@GetMapping("/inicio")
+	public String paginaInicio() {
+		return "/inicio";
+	}
 	
 	@GetMapping("/registro")
 	public String nuevoPerfil(ModelMap model) {
