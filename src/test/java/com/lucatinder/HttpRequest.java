@@ -34,10 +34,26 @@ public class HttpRequest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void ShouldReturnDefaultMessage() throws Exception {
+    public void devuelveRegistro() throws Exception {
         assertThat(this.restTemplate.
         		getForObject("http://localhost:" + port + "/registro",String.class)).
           contains("registro");
+    }
+    
+    /* Comentado porque aun no existe la página inicio.html
+    @Test
+    public void devuelveInicio() throws Exception {
+        assertThat(this.restTemplate.
+        		getForObject("http://localhost:" + port + "/inicio",String.class)).
+          contains("inicio");
+    }
+    */
+    
+    @Test
+    public void devuelveLogin() throws Exception {
+        assertThat(this.restTemplate.
+        		getForObject("http://localhost:" + port + "/login",String.class)).
+          contains("login");
     }
     
     
