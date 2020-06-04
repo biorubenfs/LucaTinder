@@ -1,0 +1,81 @@
+.header {
+  background: url("../Imagenes/PortadaInicio.webp") no-repeat center;
+  background-size: cover;
+  min-height: 100vh;
+}
+ 
+.header .navbar {
+  background-color: transparent !important;
+}
+
+.tlogo { 
+	width: 250px; 
+	hanging-punctuation: 100px; 
+	margin: 0 auto; 
+}
+
+.tlogo img { 
+	width: 200px;
+	height: auto;
+}
+
+.collapse navbar-collapse{
+	float: right;
+}
+
+header h1{
+	text-align: center;
+	color: white;
+	font-size: 10vw;
+	user-select: none;
+}
+
+header p{
+	padding-top: 25px;
+	text-align: center;
+	color: white;
+	font-size:0.7vw;
+	user-select: none;
+}
+
+.center {
+  color: white;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left:100px;
+  padding-right:100px;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  border: 0px;
+  background: linear-gradient(to right, #ff3399 0%, #ff5050 100%);
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  border-radius: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.center:hover {
+  color: white;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left:100px;
+  padding-right:100px;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  border: 0px;
+  background: linear-gradient(to left, #ff3399 0%, #ff5050 100%);
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  border-radius: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.btn {
+  background-color: white; 
+  color: deeppink; 
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #ff3399 0%, #ff5050 100%);
+  color: white;
+}
