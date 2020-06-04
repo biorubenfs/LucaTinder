@@ -1,4 +1,4 @@
-package com.lucatinder.configuracion;
+/*package com.lucatinder.configuracion;
 
 import javax.sql.DataSource;
 
@@ -73,3 +73,4 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 			.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
 	}
 }
+*/
