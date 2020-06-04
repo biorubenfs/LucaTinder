@@ -24,7 +24,7 @@ public class Control {
 
 	@GetMapping("/")
 	public String paginaInicio() {
-		return "/inicio";
+		return "inicio";
 	}
 	
 	@GetMapping("/registro")
