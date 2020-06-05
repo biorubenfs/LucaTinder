@@ -17,6 +17,7 @@ public class Perfil {
 	private String descripcion;
 	private String foto;
 	private String password;
+	private String email;
 	
 	@Id
 	@GeneratedValue
@@ -63,7 +64,15 @@ public class Perfil {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}	
+	
+	public String getEmail() {
+		return email;
 	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -81,6 +90,8 @@ public class Perfil {
 		builder.append(foto);
 		builder.append(", password=");
 		builder.append(password);
+		builder.append(", email=");
+		builder.append(email);
 		builder.append("]");
 		return builder.toString();
 	}
