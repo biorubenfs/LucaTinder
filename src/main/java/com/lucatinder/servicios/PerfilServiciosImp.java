@@ -1,5 +1,7 @@
 package com.lucatinder.servicios;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,11 @@ public class PerfilServiciosImp implements PerfilServicios {
 		perfil.setPassword(perfil.getPassword());
 		perfil.setNombre(perfil.getNombre());
 		perfilRepositorio.save(perfil);
+	}
+
+	@Override
+	public List<Perfil> listarPerfil() {
+		return perfilDAO.listarPerfiles();
 	}
 
 }
