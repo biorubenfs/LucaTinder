@@ -9,4 +9,7 @@ import com.lucatinder.modelo.Perfil;
 public interface PerfilRepositorio extends JpaRepository<Perfil, Integer>{
 	Perfil findByNombre(String nombre);
 	Perfil findByPassword(String password);
+	
+	// Prueba
+	Perfil findByEmail(String email);
 }

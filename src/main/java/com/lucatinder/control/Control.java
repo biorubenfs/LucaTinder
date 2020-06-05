@@ -47,10 +47,10 @@ public class Control {
 	
 	@PostMapping("/registro")
 	public String nuevoPerfil(Perfil perfil, BindingResult bindingResult, Model model) {
-		Perfil perfilExiste = perfilServicios.findByUsername(perfil.getNombre());
+		Perfil perfilExiste = perfilServicios.findByEmail(perfil.getEmail());
 		
 		if(perfilExiste != null) {
-			model.addAttribute("mensaje", "El nombre de usuario ya existe");
+			model.addAttribute("mensaje", "Ese correo ya existe");
 			return "registro";
 		}
 		else {
