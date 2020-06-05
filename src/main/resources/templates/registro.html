@@ -1,37 +1,100 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Página de Registro</title>
-	<meta charset="UTF-8" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-</head>
-<body class="container">
-	<h1>Página de Registro</h1>
-        <form th:action="@{/registro}" method="post" th:object="${perfil}">
-            <div><label> Nombre de usuario :</label></div> 
-            <div><input type="text" name="nombre"/></div>
-   
-            <div><label> Edad :</label></div> 
-            <div><input type="text" name="edad"/></div>
-            
-            <div><label> Género :</label></div> 
-            <div><input type="text" name="genero"/></div>
-            
-            <div><label> Añade una descripción :</label></div> 
-            <div><input type="text" name="descripcion"/></div>
-            
-            <div><label> Sube una foto :</label></div> 
-            <div><input type="text" name="foto"/></div>
-            
-             <div><label> Password: </label></div>
-            <div><input type="password" name="password"/></div>
-            <div><input type="submit" value="Registrarse"/></div>
-        </form>
-        
-         	<!-- <div th:text="${message}"></div>
-           	<div><a th:href="@{/registro}">Registrar</a></div>
-          <div><a th:href="@{/protected}">Try to go to protected(solo para role User)</a></div>
-           	<div><a th:href="@{/admin}">Try to go to admin(solo para role Admin)</a></div>-->
-        
-    </body>
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/resources/css/EstiloPaginaRegistro.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+         crossorigin="anonymous">
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" 
+         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" 
+         crossorigin="anonymous"></script>
+      <title>Registro</title>
+      <link rel="shortcut icon" href="/resources/imagenes/favicon.ico" />
+   </head>
+   <body>
+      <header class="header">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a style="user-select: none" href="/"><img class="tlogo" src="/resources/imagenes/Logo-LucaTinderBN.webp" alt="Tinder Logo" title="Inicio"/></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto"></ul>
+               <ul class="nav-item dropdown">
+                  <a style="user-select: none;" href="/login"><button class="btn hover">INICIAR SESIÓN</button></a>
+               </ul>
+            </div>
+         </nav>
+         <h1 style="color: white;">Formulario de registro</h1>
+         <p style="color: white;">Rellena el siguiente formulario con tus datos para que los demás sepan quién eres.</p>
+         <div class="container">
+            <form th:action="@{/registro}" method="post" th:object="${perfil}">
+               <div class="row">
+                  <div class="col-25">
+                     <label for="fname"></label>
+                  </div>
+                  <div class="col-75">
+                     <input type="email" name="email" placeholder="Email">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-25">
+                     <label for="fname"></label>
+                  </div>
+                  <div class="col-75">
+                     <input type="password" name="password" placeholder="Contraseña">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-25">
+                     <label for="fname"></label>
+                  </div>
+                  <div class="col-75">
+                     <input type="text" name="nombre" placeholder="Nombre completo">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-25">
+                     <label for="lname"></label>
+                  </div>
+                  <div class="col-75">
+                     <input type="number" name="edad" placeholder="Edad" min="18">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-25">
+                     <label for="country"></label>
+                  </div>
+                  <div class="col-75">
+                     <select id="country" name="country">
+                        <option value="Hombre">Hombre</option>
+                        <option value="Mujer">Mujer</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-25">
+                     <label for="lname"></label>
+                  </div>
+                  <div class="col-75">
+                     Foto de perfil
+                     <input type="file" name="foto" placeholder="Foto de perfil" accept="image/*">
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-25">
+                     <label for="subject"></label>
+                  </div>
+                  <div class="col-75">
+                     <textarea id="subject" name="subject" placeholder="Cuéntanos algo sobre ti..." style="height:200px"></textarea>
+                  </div>
+               </div>
+	            <div class="row">
+                  <button class="btn-registro center" type="submit" style="user-select: none;" >REGÍSTRARSE</button>
+	            </div>
+            </form>
+         </div>
+      </header>
+   </body>
 </html>
