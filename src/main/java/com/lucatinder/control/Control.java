@@ -63,8 +63,7 @@ public class Control {
 	@GetMapping("/login")
 	public String loginPage() {
 		return "login";
-	}
-		
+  }
 	// Un método para obtener un listado (de perfiles de momento)
 	@GetMapping("/listado")
 	public ModelAndView listadoPerfiles(){
@@ -73,8 +72,7 @@ public class Control {
 		model.addObject("listadoPerfiles", listadoPerfiles);
 		return model;
 	}
-	
-	
+
 	@RequestMapping("/login")  
     @ResponseBody
 	public ModelAndView listadoPerfiles1(){
@@ -83,5 +81,4 @@ public class Control {
 		model.addObject("listadoPerfiles", listadoPerfiles);
 		return model;
 	}
-	
 }

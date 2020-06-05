@@ -25,6 +25,7 @@ public class PerfilDAOImp implements PerfilDAO{
 		entityManager.merge(perfil);
 	}
 
+
 	/**
 	 * Metodo que devuelve una lista con todos los perfiles en la base de datos
 	 * Hay que modificarlo para que devuelva un perfil aleatorio.
