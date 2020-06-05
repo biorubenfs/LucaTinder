@@ -37,4 +37,8 @@ public class PerfilDAOImp implements PerfilDAO{
 		String hql = "FROM Perfil ORDER BY RAND()";
 		return (List<Perfil>) entityManager.createQuery(hql).getResultList();
 	}
+	
+	public Perfil get(int id) {
+		return entityManager.find(Perfil.class, id);
+	}
 }
