@@ -1,5 +1,7 @@
 package com.lucatinder.control;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.lucatinder.modelo.Perfil;
 import com.lucatinder.servicios.PerfilServicios;
@@ -45,13 +48,20 @@ public class Control {
 			perfilServicios.agregarPerfil(perfil);
 			model.addAttribute("mensaje", "El perfil ha sido creado correctamente");
 			return "login";
-		}
-		
+		}	
 	}
 	
 	@GetMapping("/login")
 	public String loginPage() {
 		return "login";
 	}
-
+	
+	// Un método para obtener un listado (de perfiles de momento)
+	@GetMapping("/listado")
+	public ModelAndView listadoPerfiles(){
+		List<Perfil> listadoPerfiles = perfilServicios.listarPerfil();
+		ModelAndView model = new ModelAndView("listado");
+		model.addObject("listadoPerfiles", listadoPerfiles);
+		return model;
+	}
 }
