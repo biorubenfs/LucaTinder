@@ -25,6 +25,7 @@ public class PerfilDAOImp implements PerfilDAO{
 		entityManager.merge(perfil);
 	}
 
+
 	/**
 	 * Metodo que devuelve una lista con todos los perfiles en la base de datos
 	 * Hay que modificarlo para que devuelva un perfil aleatorio.
@@ -33,7 +34,7 @@ public class PerfilDAOImp implements PerfilDAO{
 	@Override
 	@Transactional
 	public List<Perfil> listarPerfiles() {
-		String hql = "FROM Perfil";
+		String hql = "FROM Perfil ORDER BY RAND()";
 		return (List<Perfil>) entityManager.createQuery(hql).getResultList();
 	}
 }
