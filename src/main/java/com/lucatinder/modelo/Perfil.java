@@ -6,6 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Clase Entidad de la tabla perfil de la base de datos
+ * @author Alejandro Jurado
+ * Fecha: 5-6-2020
+ *
+ */
 @Entity
 @Table(name ="PERFIL")
 public class Perfil {

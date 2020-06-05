@@ -14,6 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.lucatinder.modelo.Perfil;
 import com.lucatinder.servicios.PerfilServicios;
 
+/**
+ * Controlador principal de la aplicación
+ * @author David Vigon, Alejandro Jurado, Ruben Fernandez
+ * Fecha: 5-6-2020.
+ * Gestiona la las páginas /inicio, /registro, /login y /listado
+ *
+ */
 @Controller
 public class Control {
 
