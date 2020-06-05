@@ -63,4 +63,11 @@ public class PerfilServiciosImp implements PerfilServicios {
 		return perfilDAO.get(id);
 	}
 
+	/*
+	@Override
+	public List<Perfil> listarPerfiles(Perfil perfil) {
+		return perfilDAO.listarPerfiles(perfil);
+	}
+	*/
+
 }

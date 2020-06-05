@@ -28,7 +28,6 @@ public class PerfilDAOImp implements PerfilDAO{
 
 	/**
 	 * Metodo que devuelve una lista con 5 perfiles de la base de datos
-	 * Hay que modificarlo para que devuelva un perfil aleatorio.
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -37,6 +36,30 @@ public class PerfilDAOImp implements PerfilDAO{
 		String hql = "FROM Perfil ORDER BY RAND()";
 		return (List<Perfil>) entityManager.createQuery(hql).setMaxResults(5).getResultList();
 	}
+	
+	
+	/**
+	 * Metodo que devuelve una lista con 5 perfiles de la base de datos
+	 * Debe evitar que en la lista devuelta se encuentre el propio usuario
+	 */
+	/*
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Perfil> listarPerfiles(Perfil perfil) {
+		String hql = "FROM Perfil ORDER BY RAND()";
+		List<Perfil> lista = entityManager.createQuery(hql).setMaxResults(5).getResultList();
+		for(Perfil i : lista) {
+			if(i.getEmail().equalsIgnoreCase(perfil.getEmail()) {
+				lista.remove(perfil);
+			}
+		}
+		return lista;
+	}
+	*/
+
+	
+	//Mejora del método anterior
 	
 	public Perfil get(int id) {
 		return entityManager.find(Perfil.class, id);

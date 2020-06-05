@@ -64,7 +64,8 @@ public class Control {
 	public String loginPage() {
 		return "login";
   }
-	// Un método para obtener un listado (de perfiles de momento)
+	
+
 	@GetMapping("/listado")
 	public ModelAndView listadoPerfiles(){
 		List<Perfil> listadoPerfiles = perfilServicios.listarPerfil();
@@ -72,6 +73,17 @@ public class Control {
 		model.addObject("listadoPerfiles", listadoPerfiles);
 		return model;
 	}
+	
+	/* Esta parte debe sustituir a la anterior, 
+	 * evitando que la sugerencia de contacto sea el propio usuario
+	@GetMapping("/listado")
+	public ModelAndView listadoPerfiles() {
+		List<Perfil> listadoPerfiles = perfilServicios.listarPerfil();
+		ModelAndView model = new ModelAndView("listado");
+		model.addObject("listadoPerfiles", listadoPerfiles);
+		return model;
+	}
+	*/
 
 	@RequestMapping("/login")  
     @ResponseBody
