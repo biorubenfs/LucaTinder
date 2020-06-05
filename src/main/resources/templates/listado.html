@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Página de Registro</title>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
-<body>
+<body class="container">
+	<h1>Página de listado de perfiles</h1>
+	<h2>LISTADO DE USUARIOS</h2>
+	<p>Estos son los datos de la tabla de usuarios</p>
 
+	<table border="1">
+		<tr>
+			<th>Nombre</th>
+			<th>Edad</th>
+			<th>Genero</th>
+			<th>Descripción</th>
+			<th>Foto</th>
+			<th>Password</th>
+		</tr>
+		<tr th:each="perfil, status : ${listadoPerfiles}">
+			<td th:text="${perfil.nombre}" />
+			<td th:text="${perfil.edad}" />
+			<td th:text="${perfil.genero}" />
+			<td th:text="${perfil.descripcion}" />
+			<td th:text="${perfil.foto}" />
+			<td th:text="${perfil.password}" />
+		</tr>
+
+	</table>
+	<p>
+		<a href="registro">Haz clic para crear un NUEVO USUARIO</a>
+	</p>
 </body>
 </html>
