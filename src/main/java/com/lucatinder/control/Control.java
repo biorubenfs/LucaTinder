@@ -47,7 +47,7 @@ public class Control {
 	
 	@PostMapping("/registro")
 	public String nuevoPerfil(Perfil perfil, BindingResult bindingResult, Model model) {
-		Perfil perfilExiste = perfilServicios.findByEmail(perfil.getEmail());
+		Perfil perfilExiste = perfilServicios.findByEmail(perfil.getEmail());	//comentario prueba
 		
 		if(perfilExiste != null) {
 			model.addAttribute("mensaje", "Ese correo ya existe");
