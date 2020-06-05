@@ -33,6 +33,10 @@ public class HttpRequest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    /*
+     * Método que comprueba la existencia de un determinado contenido en la página
+     * registro
+     */
     @Test
     public void devuelveRegistro() throws Exception {
         assertThat(this.restTemplate.
@@ -40,15 +44,21 @@ public class HttpRequest {
           contains("registro");
     }
     
-    /* Comentado porque aun no existe la página inicio.html
+    /*
+     * Método que comprueba la existencia de un determinado contenido en la página
+     * inicio
+     */
     @Test
     public void devuelveInicio() throws Exception {
         assertThat(this.restTemplate.
         		getForObject("http://localhost:" + port + "/inicio",String.class)).
           contains("inicio");
     }
-    */
     
+    /*
+     * Método que comprueba la existencia de un determinado contenido en la página
+     * de login
+     */
     @Test
     public void devuelveLogin() throws Exception {
         assertThat(this.restTemplate.
