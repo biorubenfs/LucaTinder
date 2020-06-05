@@ -1,4 +1,4 @@
-/*package com.lucatinder.configuracion;
+package com.lucatinder.configuracion;
 
 import javax.sql.DataSource;
 
@@ -26,10 +26,15 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 
-			.jdbcAuthentication()
-			.usersByUsernameQuery(perfilQuery)
+		.inMemoryAuthentication()  
+        .withUser("user")  
+        .password("{noop}pass")  
+        .roles("USER");
+		
+			//.jdbcAuthentication()
+			//.usersByUsernameQuery(perfilQuery)
 			//.authoritiesByUsernameQuery(perfilQuery)
-			.dataSource(dataSource);
+			//.dataSource(dataSource);
 			//No se esta usando realmente porque lo genero desde Servicios
 			//.passwordEncoder();
 			 
@@ -39,7 +44,19 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http
-			.authorizeRequests()
+		
+		.authorizeRequests()  
+		.antMatchers( "/inicio").permitAll()
+		.antMatchers( "/registro").permitAll()
+		.antMatchers( "/listado").permitAll()
+		.antMatchers( "/login").permitAll()
+        .anyRequest().authenticated()  
+        .and() 
+        .formLogin()
+        .loginPage("/")  
+        .failureUrl("/login")  
+        .permitAll();
+			/*.authorizeRequests()
 			.antMatchers("/").permitAll()		
 			.antMatchers("/login").permitAll()
 			.antMatchers("/listado").permitAll()
@@ -63,7 +80,7 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 				.logoutSuccessUrl("/")
 				.and()
 			.exceptionHandling()
-				.accessDeniedPage("/access-denied");
+				.accessDeniedPage("/access-denied");*/
 	}
 	
 	@Override
@@ -73,4 +90,3 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 			.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
 	}
 }
-*/

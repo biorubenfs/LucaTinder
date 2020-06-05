@@ -33,7 +33,7 @@ public class PerfilDAOImp implements PerfilDAO{
 	@Override
 	@Transactional
 	public List<Perfil> listarPerfiles() {
-		String hql = "FROM Perfil";
+		String hql = "FROM Perfil ORDER BY RAND()";
 		return (List<Perfil>) entityManager.createQuery(hql).getResultList();
 	}
 }
