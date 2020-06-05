@@ -9,6 +9,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lucatinder.modelo.Perfil;
@@ -55,7 +57,7 @@ public class Control {
 	public String loginPage() {
 		return "login";
 	}
-	
+		
 	// Un método para obtener un listado (de perfiles de momento)
 	@GetMapping("/listado")
 	public ModelAndView listadoPerfiles(){
@@ -64,4 +66,15 @@ public class Control {
 		model.addObject("listadoPerfiles", listadoPerfiles);
 		return model;
 	}
+	
+	
+	@RequestMapping("/login")  
+    @ResponseBody
+	public ModelAndView listadoPerfiles1(){
+		List<Perfil> listadoPerfiles = perfilServicios.listarPerfil();
+		ModelAndView model = new ModelAndView("listado");
+		model.addObject("listadoPerfiles", listadoPerfiles);
+		return model;
+	}
+	
 }
