@@ -13,15 +13,12 @@
             <div><input type="text" name="nombre"/></div>
              <div><label> Password: </label></div>
             <div><input type="password" name="password"/></div>
-            <div><input type="submit" value="Sign in"/></div>
+            <div><input type="submit" value="Acceso"/></div>
         </form>
          	<div th:text="${message}"></div>
-           	<div><a th:href="@{/registro}">Registrar</a></div>
-          <!--<div><a th:href="@{/protected}">Try to go to protected(solo para role User)</a></div>
+            <!--<div><a th:href="@{/registro}">Registrar</a></div>
+         <div><a th:href="@{/protected}">Try to go to protected(solo para role User)</a></div>
            	<div><a th:href="@{/admin}">Try to go to admin(solo para role Admin)</a></div>-->
-        <div th:if="${param.error}">
-            Login incorrecto.
-        </div>
         <div th:if="${param.error}">
             Login incorrecto.
         </div>
