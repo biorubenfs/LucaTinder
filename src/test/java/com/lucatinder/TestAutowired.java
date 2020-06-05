@@ -14,7 +14,11 @@ import com.lucatinder.control.Control;
 import com.lucatinder.datos.PerfilDAO;
 import com.lucatinder.servicios.PerfilServicios;
 
-// Prueba de inyección de dependencias
+/**
+ * Clase que recoge diferentes método de testeo de inyección de dependencias.
+ * @author David Vigón, Alejandro Jurado, Ruben Fernández
+ * Fecha: 5-6-2020
+ */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class TestAutowired {
