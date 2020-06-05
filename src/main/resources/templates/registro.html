@@ -37,7 +37,8 @@
                      <label for="email"></label>
                   </div>
                   <div class="col-75">
-                     <input type="email" name="email" placeholder="Email">
+                     <input type="email" name="email" placeholder="Email" required="required">
+         			 <p th:text="${mensaje}" style="color: red;"></p>
                   </div>
                </div>
                <div class="row">
@@ -45,7 +46,7 @@
                      <label for="password"></label>
                   </div>
                   <div class="col-75">
-                     <input type="password" name="password" placeholder="Contraseña">
+                     <input type="password" name="password" placeholder="Contraseña" required="required">
                   </div>
                </div>
                <div class="row">
@@ -53,7 +54,7 @@
                      <label for="nombre"></label>
                   </div>
                   <div class="col-75">
-                     <input type="text" name="nombre" placeholder="Nombre completo">
+                     <input type="text" name="nombre" placeholder="Nombre completo" required="required">
                   </div>
                </div>
                <div class="row">
@@ -61,7 +62,7 @@
                      <label for="edad"></label>
                   </div>
                   <div class="col-75">
-                     <input type="number" name="edad" placeholder="Edad" min="18">
+                     <input type="number" name="edad" placeholder="Edad" min="18" required="required">
                   </div>
                </div>
                <div class="row">
@@ -69,7 +70,7 @@
                      <label for="genero"></label>
                   </div>
                   <div class="col-75">
-                     <select id="genero" name="genero">
+                     <select id="genero" name="genero" required="required">
                         <option value="Hombre">Hombre</option>
                         <option value="Mujer">Mujer</option>
                      </select>
@@ -89,7 +90,7 @@
                      <label for="subject"></label>
                   </div>
                   <div class="col-75">
-                     <textarea id="descripcion" name="descripcion" placeholder="Cuéntanos algo sobre ti..." style="height:200px"></textarea>
+                     <textarea id="descripcion" name="descripcion" placeholder="Cuéntanos algo sobre ti..." style="height:200px" required="required"></textarea>
                   </div>
                </div>
 	            <div class="row">
