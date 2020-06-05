@@ -27,7 +27,7 @@ public class PerfilDAOImp implements PerfilDAO{
 
 
 	/**
-	 * Metodo que devuelve una lista con todos los perfiles en la base de datos
+	 * Metodo que devuelve una lista con 5 perfiles de la base de datos
 	 * Hay que modificarlo para que devuelva un perfil aleatorio.
 	 */
 	@SuppressWarnings("unchecked")
