@@ -11,6 +11,9 @@ public interface PerfilServicios {
 	public Perfil findByPassword(String pasword);
 	public void salvarPerfil(Perfil perfil);
 	public List<Perfil> listarPerfil();
+	
+	// prueba
+	public Perfil findByEmail(String email);
 
 }
 

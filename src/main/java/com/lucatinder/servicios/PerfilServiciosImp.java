@@ -53,4 +53,11 @@ public class PerfilServiciosImp implements PerfilServicios {
 		return perfilDAO.listarPerfiles();
 	}
 
+	@Override
+	public Perfil findByEmail(String email) {
+		return perfilRepositorio.findByEmail(email);
+	}
+	
+	
+
 }

@@ -20,7 +20,7 @@ public class TestCSS {
 	@Autowired
 	private MockMvc mockMvc;
 	
-	//¿Por qué pelotas da error esto??
+	//¿Por qué pelotas da error esto?? No lo entiendo, hay que solucionarlo
 	@Test
 	public void devuelveArchivoCss() throws Exception {
 		
