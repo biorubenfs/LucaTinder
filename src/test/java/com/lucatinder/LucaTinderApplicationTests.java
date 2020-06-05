@@ -12,18 +12,18 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest
 public class LucaTinderApplicationTests {
 	
-	// Esta prueba debería fallar
+	// Esta prueba NO debería fallar
 	@Test
 	void contextLoads() {
-		assertThat(false).isTrue();
+		assertThat(true).isTrue();
 	}
 	
 	
 	/*
-	//Esta prueba no debería fallar
+	//Esta prueba SÍ debería fallar
 	@Test
 	void contextLoads() {
-		assertThat(true).isTrue();
+		assertThat(false).isTrue();
 	}
 	*/
     

@@ -10,22 +10,14 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
+/**
+ * Clase para comprobar la existencia 
+ * @author admin
+ *
+ */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class HttpRequest {
-	
-	/*
-	 * we could start the application up and listen for a 
-	 * connection like it would do in production, and 
-	 * then send an HTTP request and assert the response.
-	 * 
-	 * Note the use of webEnvironment=RANDOM_PORT to start the server with a random port 
-	 * (useful to avoid conflicts in test environments), 
-	 * and the injection of the port with  @LocalServerPort. 
-	 * Also note that Spring Boot has provided a TestRestTemplate 
-	 * for you automatically, and all you have to do is @Autowired it.
-	 */
 
     @LocalServerPort
     private int port;
@@ -33,6 +25,10 @@ public class HttpRequest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    /*
+     * Método que comprueba la existencia de un determinado contenido en la página
+     * de registro
+     */
     @Test
     public void devuelveRegistro() throws Exception {
         assertThat(this.restTemplate.
@@ -40,15 +36,21 @@ public class HttpRequest {
           contains("registro");
     }
     
-    /* Comentado porque aun no existe la página inicio.html
+    /*
+     * Método que comprueba la existencia de un determinado contenido en la página
+     * de inicio
+     */
     @Test
     public void devuelveInicio() throws Exception {
         assertThat(this.restTemplate.
         		getForObject("http://localhost:" + port + "/inicio",String.class)).
           contains("inicio");
     }
-    */
     
+    /*
+     * Método que comprueba la existencia de un determinado contenido en la página
+     * de login
+     */
     @Test
     public void devuelveLogin() throws Exception {
         assertThat(this.restTemplate.
@@ -56,5 +58,15 @@ public class HttpRequest {
           contains("login");
     }
     
+    /*
+     * Método que comprueba la existencia de un determinado contenido en la página
+     * listado de perfiles
+     */
+    @Test
+    public void devuelveListadoPerfiles() throws Exception {
+        assertThat(this.restTemplate.
+        		getForObject("http://localhost:" + port + "/listado",String.class)).
+          contains("listado de perfiles");
+    }
     
 }

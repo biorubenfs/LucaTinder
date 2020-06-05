@@ -11,6 +11,11 @@ import com.lucatinder.datos.PerfilDAO;
 import com.lucatinder.modelo.Perfil;
 import com.lucatinder.repositorio.PerfilRepositorio;
 
+/**
+ * Clase que implementa los métodos de la interfaz PerfilServicios
+ * @author David Vigón, Alejandro Jurado, Rubén Fernández
+ * Fecha: 5-6-2020
+ */
 @Service
 @Transactional
 public class PerfilServiciosImp implements PerfilServicios {
