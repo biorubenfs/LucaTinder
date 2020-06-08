@@ -51,12 +51,16 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 		.antMatchers( "/listado").permitAll()
 		.antMatchers( "/login").permitAll()
 		.antMatchers( "/rperfil/listar").permitAll()
+		.antMatchers( "/rperfil/alta").permitAll()
         .anyRequest().authenticated()  
         .and() 
         .formLogin()
         .loginPage("/")  
         .failureUrl("/login")  
-        .permitAll();
+        .permitAll()
+        .and()
+        .csrf()
+		.disable();
 			/*.authorizeRequests()
 			.antMatchers("/").permitAll()		
 			.antMatchers("/login").permitAll()
