@@ -12,9 +12,10 @@ public interface PerfilServicios {
 	public void salvarPerfil(Perfil perfil);
 	public List<Perfil> listarPerfil();
 	public Perfil get(int id);
+	public Perfil findByEmail(String email);
 	
 	// prueba
-	public Perfil findByEmail(String email);
+	//public List<Perfil> listarPerfiles(Perfil perfil);
 
 }
 
