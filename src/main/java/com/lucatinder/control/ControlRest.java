@@ -21,6 +21,7 @@ public class ControlRest {
 	@Autowired
 	private PerfilServicios perfilServicios;
 	
+	// A ver si podemos usar aquí la clase Logger
 	private static final Logger logger = LoggerFactory.getLogger(ControlRest.class);
 
 	@GetMapping("/listar")
