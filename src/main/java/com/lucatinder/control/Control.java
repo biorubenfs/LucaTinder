@@ -1,7 +1,8 @@
 package com.lucatinder.control;
 
 import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,7 @@ public class Control {
 	@Autowired
 	private PerfilServicios perfilServicios;
 	
+	private static final Logger logger = LoggerFactory.getLogger(Control.class);
 	
 	public Control(PerfilServicios perfilServicios){
 		this.perfilServicios=perfilServicios;
@@ -36,24 +38,29 @@ public class Control {
 
 	@GetMapping("/")
 	public String paginaInicio() {
+		logger.info(">>>>>>>> en la página de inicio /");
 		return "inicio";
 	}
 	
 	@GetMapping("/registro")
 	public String nuevoPerfil(ModelMap model) {
+		logger.info(">>>>>>>> en la página de registro /registro");
 		model.addAttribute("perfil", new Perfil());
 		return "registro";
 	}
 	
 	@PostMapping("/registro")
 	public String nuevoPerfil(Perfil perfil, BindingResult bindingResult, Model model) {
+		logger.info(">>>>>>>> en la página de registro /registro POST");
 		Perfil perfilExiste = perfilServicios.findByEmail(perfil.getEmail());	//comentario prueba
 		
 		if(perfilExiste != null) {
+			logger.info(">>>>>>>> el perfil ya existe");
 			model.addAttribute("mensaje", "Ese correo ya existe");
 			return "registro";
 		}
 		else {
+			logger.info(">>>>>>>> perfil añadido correctamente");
 			perfilServicios.agregarPerfil(perfil);
 			model.addAttribute("mensaje", "El perfil ha sido creado correctamente");
 			return "login";
@@ -62,12 +69,14 @@ public class Control {
 	
 	@GetMapping("/login")
 	public String loginPage() {
+		logger.info(">>>>>>>> en la página de login /login");
 		return "login";
   }
 	
 
 	@GetMapping("/listado")
 	public ModelAndView listadoPerfiles(){
+		logger.info(">>>>>>>> en la página de listado de perfiles /listado");
 		List<Perfil> listadoPerfiles = perfilServicios.listarPerfil();
 		ModelAndView model = new ModelAndView("listado");
 		model.addObject("listadoPerfiles", listadoPerfiles);

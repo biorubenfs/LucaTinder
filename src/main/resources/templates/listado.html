@@ -26,6 +26,8 @@
 			<td th:text="${perfil.descripcion}" />
 			<td th:text="${perfil.foto}" />
 			<td th:text="${perfil.password}" />
+			<td><a th:href="@{/edit(id=${perfil.id})}">like</a> | <a
+						th:href="@{/delete(id=${perfil.id})}">dislike</a></td>
 		</tr>
 
 	</table>
