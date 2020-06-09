@@ -22,6 +22,7 @@ public class PerfilDAOImp implements PerfilDAO{
 	 */
 	@Override
 	public void agregarPerfil(Perfil perfil) {
+		
 		entityManager.merge(perfil);
 	}
 

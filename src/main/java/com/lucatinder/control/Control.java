@@ -10,8 +10,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lucatinder.modelo.Perfil;
@@ -71,7 +69,13 @@ public class Control {
 	public String loginPage() {
 		logger.info(">>>>>>>> en la página de login /login");
 		return "login";
-  }
+	}
+	
+	@PostMapping("/login")
+	public ModelAndView loginPage1() {
+		logger.info(">>>>>>>> login realizado");
+		return new ModelAndView("redirect:/listado");
+	}
 	
 
 	@GetMapping("/listado")
@@ -92,8 +96,8 @@ public class Control {
 		model.addObject("listadoPerfiles", listadoPerfiles);
 		return model;
 	}
-	*/
-
+	
+	// Esta parte parecía que no funcionaba bien.
 	@RequestMapping("/login")  
     @ResponseBody
 	public ModelAndView listadoPerfiles1(){
@@ -102,4 +106,5 @@ public class Control {
 		model.addObject("listadoPerfiles", listadoPerfiles);
 		return model;
 	}
+	*/
 }
