@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+// Crea la clase Descarte que se encarga de gestionar los dislikes de los usuarios
 @Entity
 @Table(name ="DESCARTE")
 public class Descarte {

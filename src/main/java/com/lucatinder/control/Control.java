@@ -24,6 +24,8 @@ import com.lucatinder.servicios.PerfilServicios;
  * Gestiona la las páginas /inicio, /registro, /login y /listado
  *
  */
+
+// Clase Control que se encarga de gestionar los métodos y enlaces de la aplicación
 @Controller
 public class Control {
 
