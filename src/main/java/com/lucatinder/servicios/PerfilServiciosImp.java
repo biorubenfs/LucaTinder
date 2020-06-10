@@ -1,15 +1,20 @@
 package com.lucatinder.servicios;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.lucatinder.datos.PerfilDAO;
 import com.lucatinder.modelo.Perfil;
+import com.lucatinder.modelo.Rol;
 import com.lucatinder.repositorio.PerfilRepositorio;
+import com.lucatinder.repositorio.RolRepositorio;
 
 /**
  * Clase que implementa los métodos de la interfaz PerfilServicios
@@ -26,13 +31,28 @@ public class PerfilServiciosImp implements PerfilServicios {
 	@Autowired
 	private PerfilRepositorio perfilRepositorio;
 	
+	@Autowired
+	private RolRepositorio rolRepositorio;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+    public PerfilServiciosImp(PerfilRepositorio perfilRepositorio,
+    		RolRepositorio rolRepositorio,
+                       BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.perfilRepositorio = perfilRepositorio;
+        this.rolRepositorio = rolRepositorio;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+	
 	@Override
 	public void agregarPerfil(Perfil perfil) {
 		perfilDAO.agregarPerfil(perfil);
 	}
 	
 	@Override
-	public Perfil findByUsername(String nombre) {
+	public Perfil findByNombre(String nombre) {
 		return perfilRepositorio.findByNombre(nombre);
 	}
 	
@@ -43,8 +63,10 @@ public class PerfilServiciosImp implements PerfilServicios {
 	
 	@Override
 	public void salvarPerfil(Perfil perfil) {
-		perfil.setPassword(perfil.getPassword());
-		perfil.setNombre(perfil.getNombre());
+		perfil.setPassword(bCryptPasswordEncoder.encode(perfil.getPassword()));
+		perfil.setEnabled(true);
+		Rol userAdminRole = rolRepositorio.findByRol("ADMIN");
+		perfil.setRol(new HashSet<Rol>(Arrays.asList(userAdminRole)));
 		perfilRepositorio.save(perfil);
 	}
 

@@ -1,10 +1,18 @@
 package com.lucatinder.modelo;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 
 /**
  * Clase Entidad de la tabla perfil de la base de datos
@@ -16,6 +24,9 @@ import javax.persistence.Table;
 @Table(name ="PERFIL")
 public class Perfil {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID_PERFIL")
 	private int id;
 	private String nombre;
 	private int edad;
@@ -24,10 +35,13 @@ public class Perfil {
 	private String foto;
 	private String password;
 	private String email;
+	private boolean enabled;
 	
-	@Id
-	@GeneratedValue
-	@Column(name = "ID_PERFIL")
+	@ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "perfil_rol", joinColumns = @JoinColumn(name = "id_perfil"), inverseJoinColumns = @JoinColumn(name = "id_rol"))
+	private Set<Rol> rol;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -79,6 +93,18 @@ public class Perfil {
 		this.email = email;
 	}
 	
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	public Set<Rol> getRol() {
+		return rol;
+	}
+	public void setRol(Set<Rol> rol) {
+		this.rol = rol;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

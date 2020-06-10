@@ -8,8 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lucatinder.modelo.Perfil;
@@ -40,7 +43,7 @@ public class Control {
 		return "inicio";
 	}
 	
-	@GetMapping("/registro")
+	/*@GetMapping("/registro")
 	public String nuevoPerfil(ModelMap model) {
 		logger.info(">>>>>>>> en la página de registro /registro");
 		model.addAttribute("perfil", new Perfil());
@@ -63,9 +66,38 @@ public class Control {
 			model.addAttribute("mensaje", "El perfil ha sido creado correctamente");
 			return "login";
 		}	
-	}
+	}*/
 	
-	@GetMapping("/login")
+	@RequestMapping(value="/registro", method = RequestMethod.GET)
+    public ModelAndView registration(){
+        ModelAndView modelAndView = new ModelAndView();
+        Perfil per = new Perfil();
+        modelAndView.addObject("perfil", per);
+        modelAndView.setViewName("registro");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/registro", method = RequestMethod.POST)
+    public ModelAndView createNewUser(@Validated Perfil per, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+        Perfil userExists = perfilServicios.findByNombre(per.getNombre());
+        if (userExists != null) {
+            bindingResult.rejectValue("Nombre", "error.perfil", "Este perfil ya esta registrado");
+        }
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("register");
+        } else {
+        	perfilServicios.salvarPerfil(per);
+            modelAndView.addObject("successMessage", "Registro satisfactorio");
+            modelAndView.addObject("perfil", new Perfil());
+            modelAndView.setViewName("redirect:/");
+        }
+        return modelAndView;
+    }
+	
+	
+	
+	/*@GetMapping("/login")
 	public String loginPage() {
 		logger.info(">>>>>>>> en la página de login /login");
 		return "login";
@@ -75,17 +107,37 @@ public class Control {
 	public ModelAndView loginPage1() {
 		logger.info(">>>>>>>> login realizado");
 		return new ModelAndView("redirect:/listado");
+	}*/
+	
+	@RequestMapping(value ="/login", method = RequestMethod.GET)
+	public String login(Model model, String error, String logout) {
+	    if (error != null)
+	        model.addAttribute("error", "Your username and password is invalid.");	   	    	
+	    if (logout != null)
+	        model.addAttribute("message", "You have been logged out successfully.");
+	    return "login";
 	}
 	
 
-	@GetMapping("/listado")
+	/*@GetMapping("/listado")
 	public ModelAndView listadoPerfiles(){
 		logger.info(">>>>>>>> en la página de listado de perfiles /listado");
 		List<Perfil> listadoPerfiles = perfilServicios.listarPerfil();
 		ModelAndView model = new ModelAndView("listado");
 		model.addObject("listadoPerfiles", listadoPerfiles);
 		return model;
-	}
+	}*/
+	
+	@RequestMapping(value="/listado", method = RequestMethod.GET)
+    public ModelAndView home(){
+        ModelAndView modelAndView = new ModelAndView();
+        //Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        //Usuario user = usuario.findByNombre(auth.getName());
+        List<Perfil> listadoPerfiles = perfilServicios.listarPerfil();
+        modelAndView.addObject("listadoPerfiles", listadoPerfiles);
+        modelAndView.setViewName("listado");
+        return modelAndView;	    	
+    }
 	
 	/* Esta parte debe sustituir a la anterior, 
 	 * evitando que la sugerencia de contacto sea el propio usuario
