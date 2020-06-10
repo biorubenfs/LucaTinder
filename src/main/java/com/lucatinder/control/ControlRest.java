@@ -21,16 +21,18 @@ public class ControlRest {
 	@Autowired
 	private PerfilServicios perfilServicios;
 	
-	// A ver si podemos usar aquí la clase Logger
+	// A ver si podemos usar aquí la clase Logger.
 	private static final Logger logger = LoggerFactory.getLogger(ControlRest.class);
 
 	@GetMapping("/listar")
 	public Collection<Perfil> listarPerfiles() {
+		logger.info(">>>>>>>> listado perfiles REST /");
 		return perfilServicios.listarPerfil();
 	}
 
 	@PostMapping("/alta")
 	public Perfil agregarPerfil(@RequestBody Perfil perfil) {
+		logger.info(">>>>>>>> agregado perfil REST  ");
 		perfilServicios.agregarPerfil(perfil);
 		return perfil;
 	}
