@@ -4,32 +4,45 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.lucatinder.servicios.DetallesPerfilServicios;
 
 @Configuration
 @EnableWebSecurity
 public class Configuracion extends WebSecurityConfigurerAdapter{
 
-	@Autowired
+	/*@Autowired
 	private DataSource dataSource;
 	
 	@Value("${spring.queries.users-query}")
-	private String perfilQuery;
+	private String perfilQuery;*/
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+	private DetallesPerfilServicios servicio;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 
-		.inMemoryAuthentication()  
+		.userDetailsService(servicio)
+		.passwordEncoder(bCryptPasswordEncoder);
+		
+		/*.inMemoryAuthentication()  
         .withUser("user")  
         .password("{noop}pass")  
-        .roles("USER");
+        .roles("USER");*/
 		
 			//.jdbcAuthentication()
 			//.usersByUsernameQuery(perfilQuery)
@@ -45,22 +58,28 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 
 		http
 		
-		.authorizeRequests()  
+		.authorizeRequests() 
+		.antMatchers( "/").permitAll()
 		.antMatchers( "/inicio").permitAll()
-		.antMatchers( "/registro").permitAll()
-		.antMatchers( "/listado").permitAll()
-		.antMatchers( "/login").permitAll()
+		.antMatchers( "/registro").permitAll()		
+		.antMatchers( "/login").permitAll()		
 		.antMatchers( "/rperfil/listar").permitAll()
 		.antMatchers( "/rperfil/alta").permitAll()
-        .anyRequest().authenticated()  
-        .and() 
+		
+		.antMatchers( "/listado").hasAnyAuthority("ADMIN")
+        .anyRequest()
+        .authenticated().and().csrf().disable()
         .formLogin()
-        .loginPage("/")  
-        .failureUrl("/login")  
-        .permitAll()
+        .loginPage("/login")
+        .failureUrl("/login?error=true")
+        .defaultSuccessUrl("/listado")
+        .usernameParameter("nombre")
+        .passwordParameter("password")
         .and()
-        .csrf()
-		.disable();
+        .logout()
+        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+        .logoutSuccessUrl("/login").and().exceptionHandling()
+        .accessDeniedPage("/access-denied");
 			/*.authorizeRequests()
 			.antMatchers("/").permitAll()		
 			.antMatchers("/login").permitAll()
@@ -93,5 +112,12 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 		web
 			.ignoring()
 			.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+	}
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		System.out.println("--- Inside passwordEncoder");
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		return bCryptPasswordEncoder;
 	}
 }
