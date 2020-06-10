@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+// Crea la clase Contacto que se encarga de gestionar los matches de la aplicación
 @Entity
 @Table(name ="CONTACTO")
 public class Contacto {

@@ -53,6 +53,7 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 			 
 	}
 	
+	// Configura las url
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 

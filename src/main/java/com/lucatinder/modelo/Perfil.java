@@ -20,6 +20,8 @@ import javax.persistence.Table;
  * Fecha: 5-6-2020
  *
  */
+
+// Implementa la clase Perfil que se encarga de crear los perfiles de usuarios
 @Entity
 @Table(name ="PERFIL")
 public class Perfil {
