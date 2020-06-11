@@ -27,6 +27,21 @@
 	height: auto;
 }
 
+.LogoMatch{
+	width: 500px; 
+	height: auto;
+	margin: 0 auto; 
+	display:block;
+	padding: 50px;
+}
+
+.LogoDescartado{
+	width: 500px; 
+	height: auto;
+	margin: 0 auto; 
+	display:block;
+}
+
 header h1{
 	text-align: center;
 	color: white;
