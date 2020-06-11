@@ -17,7 +17,7 @@
 	<script src="/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-      <title>LucaTinder</title>
+      <title>Listado descartados</title>
 	  <link rel="shortcut icon" href="/resources/Imagenes/favicon.ico" />
    </head>
    <body>
@@ -30,13 +30,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav mr-auto"></ul>
                <ul class="nav-item dropdown">
-                  <a style="user-select: none;" href="/matches"><button class="btn hover">Descartados</button></a>
-                  <a style="user-select: none;" href="/descartados"><button class="btn hover">Matches</button></a>
+                  <a style="user-select: none;" href="/matches"><button class="btn hover">Matches</button></a>
+                  <a style="user-select: none;" href="/listado"><button class="btn hover">Hacer Match</button></a>
                </ul>
             </div>
          </nav>
 		 
-		 <br><h1>Perfiles recomendados para ti</h1><br>
+		 <img class="LogoDescartado" src="/resources/Imagenes/descartado.png" alt="Ruled Out!" title="Ruled Out"/>
 		  
 		 <div style="overflow-x:auto; text-align:center;">
 		  	 <table>
@@ -46,7 +46,6 @@
 					<th>Edad</th>
 					<th>Genero</th>
 					<th>Descripción</th>
-					<th>Match</th>
 				</tr>
 				<tr th:each="perfil, status : ${listadoPerfiles}" class="contenido">
 					<td th:text="${perfil.foto}" style="color: black;"/>
@@ -54,10 +53,6 @@
 					<td th:text="${perfil.edad}" style="color: black;" />
 					<td th:text="${perfil.genero}" style="color: black;" />
 					<td th:text="${perfil.descripcion}" style="color: black;" />
-					<td class="botones">
-						<button type="button" class="like" style="outline:none"><i class="fa fa-heart" aria-hidden="true"></i></button>
-						<button type="button" class="dislike" style="outline:none"><i class="fa fa-times" aria-hidden="true"></i></button>
-					</td>
 				</tr>
 			</table>
 		</div>
