@@ -18,6 +18,6 @@ public interface PerfilDAO {
 	public void agregarDescarte(Perfil perfil1, Perfil perfil2);
 	
 	public List<Contacto> listarContactos();
-	public List<Descarte> listarDescartes();
+	public List<Descarte> listarDescartes(int id_perfil1, int id_perfil2);
 
 }

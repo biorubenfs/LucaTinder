@@ -116,12 +116,14 @@ public class Control {
 		return "redirect:/listado";
 	}
 	
-	@RequestMapping(value="/descartados", method = RequestMethod.GET)
-    public ModelAndView Descartes(){
+	@RequestMapping(value="/descartados/{idDescarte}", method = RequestMethod.GET)
+    public ModelAndView Descartes(@PathVariable("idDescarte") int idDescarte){
         ModelAndView modelAndView = new ModelAndView();
-        List<Descarte> listadoDescarte = perfilServicios.listarDescartes();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Perfil user = perfilServicios.findByNombre(auth.getName());
+        List<Descarte> listadoDescarte = perfilServicios.listarDescartes(user.getId(), idDescarte);
         modelAndView.addObject("listadoPerfiles", listadoDescarte);
-        modelAndView.setViewName("decartados");
+        modelAndView.setViewName("descartados");
         return modelAndView;	    	
     }
 	

@@ -51,7 +51,7 @@ public class PerfilDAOImp implements PerfilDAO{
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Descarte> listarDescartes(){
+	public List<Descarte> listarDescartes(int id_perfil1, int id_perfil2){
 		String hql = "select * from Perfil where id_perfil in (select id_perfil2 from Descarte where id_perfil1=?)";
 		return (List<Descarte>) entityManager.createQuery(hql).getResultList();
 	}
