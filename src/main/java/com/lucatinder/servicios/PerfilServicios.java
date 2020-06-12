@@ -15,6 +15,7 @@ public interface PerfilServicios {
 	public Perfil findByEmail(String email);
 	
 	public void agregarContacto(Perfil perfil1, Perfil perfil2);
+	public void agregarDescarte(Perfil perfil1, Perfil perfil2);
 	
 	// prueba
 	//public List<Perfil> listarPerfiles(Perfil perfil);

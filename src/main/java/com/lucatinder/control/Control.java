@@ -106,4 +106,14 @@ public class Control {
 		return "redirect:/listado";
 	}
 	
+	@GetMapping("/listado/descartes/{idContacto}")
+	public String agregarDescarte(@PathVariable("idContacto") int idContacto) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Perfil user = perfilServicios.findByNombre(auth.getName());
+		logger.info(">>>>>>>>>>>>> Usuario logeado: " + user.getId());
+		logger.info("Le das dislike a " + idContacto);
+		perfilServicios.agregarDescarte(perfilServicios.get(user.getId()), perfilServicios.get(idContacto));
+		return "redirect:/listado";
+	}
+	
 }
