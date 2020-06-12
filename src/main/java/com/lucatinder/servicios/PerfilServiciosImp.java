@@ -97,5 +97,11 @@ public class PerfilServiciosImp implements PerfilServicios {
 		perfilDAO.agregarContacto(perfil1, perfil2);
 		
 	}
+	
+	@Override
+	public void agregarDescarte(Perfil perfil1, Perfil perfil2) {
+		perfilDAO.agregarDescarte(perfil1, perfil2);
+		
+	}
 
 }

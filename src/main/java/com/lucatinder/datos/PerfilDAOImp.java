@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lucatinder.modelo.Contacto;
+import com.lucatinder.modelo.Descarte;
 import com.lucatinder.modelo.Perfil;
 
 @Repository
@@ -73,6 +74,14 @@ public class PerfilDAOImp implements PerfilDAO{
 		contacto.setId_perfil1(perfil1.getId());
 		contacto.setId_perfil2(perfil2.getId());
 		entityManager.merge(contacto);
+	}
+	
+	@Override
+	public void agregarDescarte(Perfil perfil1, Perfil perfil2) {
+		Descarte descarte = new Descarte();
+		descarte.setId_perfil1(perfil1.getId());
+		descarte.setId_perfil2(perfil2.getId());
+		entityManager.merge(descarte);
 	}
 	
 }
