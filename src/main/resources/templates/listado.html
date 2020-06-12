@@ -54,6 +54,8 @@
 					<td th:text="${perfil.edad}" style="color: black;" />
 					<td th:text="${perfil.genero}" style="color: black;" />
 					<td th:text="${perfil.descripcion}" style="color: black;" />
+					<td><a th:href="@{/listado/contactos/{idContacto} (idContacto=${perfil.id}) }">Dar Like</a> | <a
+						th:href="@{/listado/descartes(idContacto=${perfil.id})}">Descartar</a></td>
 					<td class="botones">
 						<button type="button" class="like" style="outline:none"><i class="fa fa-heart" aria-hidden="true"></i></button>
 						<button type="button" class="dislike" style="outline:none"><i class="fa fa-times" aria-hidden="true"></i></button>

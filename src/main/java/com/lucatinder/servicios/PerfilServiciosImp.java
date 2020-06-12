@@ -91,5 +91,11 @@ public class PerfilServiciosImp implements PerfilServicios {
 		return perfilDAO.listarPerfiles(perfil);
 	}
 	*/
+	
+	@Override
+	public void agregarContacto(Perfil perfil1, Perfil perfil2) {
+		perfilDAO.agregarContacto(perfil1, perfil2);
+		
+	}
 
 }

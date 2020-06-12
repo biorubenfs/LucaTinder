@@ -27,7 +27,7 @@ public class DetallesPerfilServicios implements UserDetailsService{
 	@Override
     @Transactional
     public UserDetails loadUserByUsername(String perfilNombre) throws UsernameNotFoundException {
-        Perfil per = perfil.findByNombre(perfilNombre);
+        Perfil per = perfil.findByEmail(perfilNombre);
         List<GrantedAuthority> authorities = getUserAuthority(per.getRol());
         return buildUserForAuthentication(per, authorities);
     }

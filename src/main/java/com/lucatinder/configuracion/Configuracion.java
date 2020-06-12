@@ -74,7 +74,7 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
         .loginPage("/login")
         .failureUrl("/login?error=true")
         .defaultSuccessUrl("/listado")
-        .usernameParameter("nombre")
+        .usernameParameter("email")
         .passwordParameter("password")
         .and()
         .logout()
