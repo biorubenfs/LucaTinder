@@ -46,7 +46,7 @@
                      <label for="password"></label>
                   </div>
                   <div class="col-75">
-                     <input type="password" name="password" placeholder="Contraseña" required="required">
+                     <input type="password" name="password" placeholder="Contraseña" required="required" maxlength="99">
                   </div>
                </div>
                <div class="row">
@@ -54,7 +54,7 @@
                      <label for="nombre"></label>
                   </div>
                   <div class="col-75">
-                     <input type="text" name="nombre" placeholder="Nombre completo" required="required">
+                     <input type="text" name="nombre" placeholder="Nombre completo" required="required" maxlength="45">
                   </div>
                </div>
                <div class="row">
@@ -62,7 +62,7 @@
                      <label for="edad"></label>
                   </div>
                   <div class="col-75">
-                     <input type="number" name="edad" placeholder="Edad" min="18" required="required">
+                     <input type="number" name="edad" placeholder="Edad" min="18" max="99" required="required" maxlength="2">
                   </div>
                </div>
                <div class="row">
@@ -82,7 +82,7 @@
                   </div>
                   <div class="col-75">
                      Foto de perfil
-                     <input type="file" name="foto" placeholder="Foto de perfil" accept="image/*">
+                     <input type="file" name="foto" placeholder="Foto de perfil" accept="image/*" maxlength="999">
                   </div>
                </div>
                <div class="row">
@@ -90,7 +90,7 @@
                      <label for="subject"></label>
                   </div>
                   <div class="col-75">
-                     <textarea id="descripcion" name="descripcion" placeholder="Cuéntanos algo sobre ti..." style="height:200px" required="required"></textarea>
+                     <textarea id="descripcion" name="descripcion" placeholder="Cuéntanos algo sobre ti..." style="height:200px" required="required" maxlength="450"></textarea>
                   </div>
                </div>
 	            <div class="row">
