@@ -40,7 +40,21 @@ public class PerfilDAOImp implements PerfilDAO{
 		return (List<Perfil>) entityManager.createQuery(hql).setMaxResults(5).getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Contacto> listarContactos(){
+		String hql = "select * from Perfil where id_perfil in (select id_perfil2 from Contacto where id_perfil1=?)";
+		return (List<Contacto>) entityManager.createQuery(hql).getResultList();
+	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Descarte> listarDescartes(){
+		String hql = "select * from Perfil where id_perfil in (select id_perfil2 from Descarte where id_perfil1=?)";
+		return (List<Descarte>) entityManager.createQuery(hql).getResultList();
+	}
 	/**
 	 * Metodo que devuelve una lista con 5 perfiles de la base de datos
 	 * Debe evitar que en la lista devuelta se encuentre el propio usuario
