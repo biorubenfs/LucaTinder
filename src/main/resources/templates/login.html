@@ -58,7 +58,7 @@
                     
                     
 				    <div th:text="${message}"></div>    
-				    <div th:if="${param.error}"> Login incorrecto. </div>
+				    <div th:if="${param.error}" style="color: red;"> Login incorrecto. </div>
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit" value="Acceso">
@@ -72,9 +72,6 @@
 						</a>
 					</div>
 				</form>
-				<div th:text="${message}"></div>    
-				<div th:if="${param.error}"> Login incorrecto. </div>
-				<div th:if="${param.logout}"> Desconectado </div>
 			</div>
 		</div>
 	</div>
