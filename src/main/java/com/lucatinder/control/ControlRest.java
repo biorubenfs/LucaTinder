@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lucatinder.modelo.Contacto;
+import com.lucatinder.modelo.Descarte;
 import com.lucatinder.modelo.Perfil;
 import com.lucatinder.servicios.PerfilServicios;
 
@@ -40,11 +41,34 @@ public class ControlRest {
 		return perfil;
 	}
 	
+	/*
+	 * Hay que logearse primero para poder acceder a la consulta
+	 */
 	@GetMapping("/listarContactos/{idContacto}")
 	public Collection<Contacto> listarContactos(@PathVariable("idContacto") int id_perfil){
 		logger.info(">>>>>>>> listado contacto REST /");
-		System.out.println(id_perfil);
 		return perfilServicios.listarContactos(id_perfil);
 	}
 	
+
+	/*
+	 * Hay que logearse primero para poder acceder a la consulta
+	 */
+	@GetMapping("/listarDescartes/{idDescarte}")
+	public Collection<Descarte> listarDescartes(@PathVariable("idDescarte") int id_perfil){
+		logger.info(">>>>>>>> listado descarte REST /");
+		return perfilServicios.listarDescartes(id_perfil);
+	}
+	
+	@PostMapping("/altaContacto")
+	public void agregarContacto(@RequestBody Map<String, Integer> json) {
+		logger.info(">>>>>>>> agregado contacto REST  ");
+		perfilServicios.agregarContacto(perfilServicios.get(json.get("id_perfil1")), perfilServicios.get(json.get("id_perfil2")));			
+	}
+	
+	@PostMapping("/altaDescarte")
+	public void agregarDescarte(@RequestBody Map<String, Integer> json) {
+		logger.info(">>>>>>>> agregado contacto REST  ");
+		perfilServicios.agregarContacto(perfilServicios.get(json.get("id_perfil1")), perfilServicios.get(json.get("id_perfil2")));			
+	}
 }
