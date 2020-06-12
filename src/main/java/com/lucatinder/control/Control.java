@@ -4,12 +4,15 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,32 +49,6 @@ public class Control {
 	}
 	
 	
-	// Un comentario para borrar
-	/*@GetMapping("/registro")
-	public String nuevoPerfil(ModelMap model) {
-		logger.info(">>>>>>>> en la página de registro /registro");
-		model.addAttribute("perfil", new Perfil());
-		return "registro";
-	}
-	
-	@PostMapping("/registro")
-	public String nuevoPerfil(Perfil perfil, BindingResult bindingResult, Model model) {
-		logger.info(">>>>>>>> en la página de registro /registro POST");
-		Perfil perfilExiste = perfilServicios.findByEmail(perfil.getEmail());	//comentario prueba
-		
-		if(perfilExiste != null) {
-			logger.info(">>>>>>>> el perfil ya existe");
-			model.addAttribute("mensaje", "Ese correo ya existe");
-			return "registro";
-		}
-		else {
-			logger.info(">>>>>>>> perfil añadido correctamente");
-			perfilServicios.agregarPerfil(perfil);
-			model.addAttribute("mensaje", "El perfil ha sido creado correctamente");
-			return "login";
-		}	
-	}*/
-	
 	@RequestMapping(value="/registro", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -99,20 +76,6 @@ public class Control {
         return modelAndView;
     }
 	
-	
-	
-	/*@GetMapping("/login")
-	public String loginPage() {
-		logger.info(">>>>>>>> en la página de login /login");
-		return "login";
-	}
-	
-	@PostMapping("/login")
-	public ModelAndView loginPage1() {
-		logger.info(">>>>>>>> login realizado");
-		return new ModelAndView("redirect:/listado");
-	}*/
-	
 	@RequestMapping(value ="/login", method = RequestMethod.GET)
 	public String login(Model model, String error, String logout) {
 	    if (error != null)
@@ -121,16 +84,6 @@ public class Control {
 	        model.addAttribute("message", "You have been logged out successfully.");
 	    return "login";
 	}
-	
-
-	/*@GetMapping("/listado")
-	public ModelAndView listadoPerfiles(){
-		logger.info(">>>>>>>> en la página de listado de perfiles /listado");
-		List<Perfil> listadoPerfiles = perfilServicios.listarPerfil();
-		ModelAndView model = new ModelAndView("listado");
-		model.addObject("listadoPerfiles", listadoPerfiles);
-		return model;
-	}*/
 	
 	@RequestMapping(value="/listado", method = RequestMethod.GET)
     public ModelAndView home(){
@@ -143,24 +96,14 @@ public class Control {
         return modelAndView;	    	
     }
 	
-	/* Esta parte debe sustituir a la anterior, 
-	 * evitando que la sugerencia de contacto sea el propio usuario
-	@GetMapping("/listado")
-	public ModelAndView listadoPerfiles() {
-		List<Perfil> listadoPerfiles = perfilServicios.listarPerfil();
-		ModelAndView model = new ModelAndView("listado");
-		model.addObject("listadoPerfiles", listadoPerfiles);
-		return model;
+	@GetMapping("/listado/contactos/{idContacto}")
+	public String agregarContacto(@PathVariable("idContacto") int idContacto) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Perfil user = perfilServicios.findByNombre(auth.getName());
+		logger.info(">>>>>>>>>>>>> Usuario logeado: " + user.getId());
+		logger.info("Le das like a " + idContacto);
+		perfilServicios.agregarContacto(perfilServicios.get(user.getId()), perfilServicios.get(idContacto));
+		return "redirect:/listado";
 	}
 	
-	// Esta parte parecía que no funcionaba bien.
-	@RequestMapping("/login")  
-    @ResponseBody
-	public ModelAndView listadoPerfiles1(){
-		List<Perfil> listadoPerfiles = perfilServicios.listarPerfil();
-		ModelAndView model = new ModelAndView("listado");
-		model.addObject("listadoPerfiles", listadoPerfiles);
-		return model;
-	}
-	*/
 }
