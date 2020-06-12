@@ -56,7 +56,7 @@
 					<td th:text="${perfil.descripcion}" style="color: black;" />
 					<td class="botones">
 						<a class="like" style="outline:none" th:href="@{/listado/contactos/{idContacto} (idContacto=${perfil.id}) }"><i class="fa fa-heart" aria-hidden="true" ></i></a>
-						<a class="dislike"  style="outline:none" th:href="@{/listado/descartes/{idContacto} (idContacto=${perfil.id}) }"><i class="fa fa-times" aria-hidden="true"></i></a>
+						<a class="dislike"  style="outline:none" th:href="@{/listado/descartes/{idDescarte} (idDescarte=${perfil.id}) }"><i class="fa fa-times" aria-hidden="true"></i></a>
 					</td>
 				</tr>
 			</table>
