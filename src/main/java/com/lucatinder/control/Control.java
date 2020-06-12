@@ -45,6 +45,8 @@ public class Control {
 		return "inicio";
 	}
 	
+	
+	// Un comentario para borrar
 	/*@GetMapping("/registro")
 	public String nuevoPerfil(ModelMap model) {
 		logger.info(">>>>>>>> en la página de registro /registro");
