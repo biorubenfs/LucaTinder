@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.lucatinder.modelo.Contacto;
+import com.lucatinder.modelo.Descarte;
 import com.lucatinder.modelo.Perfil;
 import com.lucatinder.servicios.PerfilServicios;
 
@@ -113,5 +115,14 @@ public class Control {
 		perfilServicios.agregarDescarte(perfilServicios.get(user.getId()), perfilServicios.get(idContacto));
 		return "redirect:/listado";
 	}
+	
+	@RequestMapping(value="/descartados", method = RequestMethod.GET)
+    public ModelAndView Descartes(){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Descarte> listadoDescarte = perfilServicios.listarDescartes();
+        modelAndView.addObject("listadoPerfiles", listadoDescarte);
+        modelAndView.setViewName("decartados");
+        return modelAndView;	    	
+    }
 	
 }

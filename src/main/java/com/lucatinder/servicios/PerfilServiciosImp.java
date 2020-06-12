@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.lucatinder.datos.PerfilDAO;
+import com.lucatinder.modelo.Contacto;
+import com.lucatinder.modelo.Descarte;
 import com.lucatinder.modelo.Perfil;
 import com.lucatinder.modelo.Rol;
 import com.lucatinder.repositorio.PerfilRepositorio;
@@ -83,6 +85,16 @@ public class PerfilServiciosImp implements PerfilServicios {
 	@Override
 	public Perfil get(int id) {
 		return perfilDAO.get(id);
+	}
+	
+	@Override
+	public List<Contacto> listarContactos(){
+		return perfilDAO.listarContactos();
+	}
+	
+	@Override
+	public List<Descarte> listarDescartes(){
+		return perfilDAO.listarDescartes();
 	}
 
 	/*
