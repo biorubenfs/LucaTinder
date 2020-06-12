@@ -93,8 +93,8 @@ public class PerfilServiciosImp implements PerfilServicios {
 	}
 	
 	@Override
-	public List<Descarte> listarDescartes(){
-		return perfilDAO.listarDescartes();
+	public List<Descarte> listarDescartes(int id_perfil1, int id_perfil2){
+		return perfilDAO.listarDescartes(id_perfil1, id_perfil2);
 	}
 
 	/*

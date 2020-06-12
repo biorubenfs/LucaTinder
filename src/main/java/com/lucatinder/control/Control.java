@@ -8,12 +8,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -118,12 +116,14 @@ public class Control {
 		return "redirect:/listado";
 	}
 	
-	@RequestMapping(value="/descartados", method = RequestMethod.GET)
-    public ModelAndView Descartes(){
+	@RequestMapping(value="/descartados/{idDescarte}", method = RequestMethod.GET)
+    public ModelAndView Descartes(@PathVariable("idDescarte") int idDescarte){
         ModelAndView modelAndView = new ModelAndView();
-        List<Descarte> listadoDescarte = perfilServicios.listarDescartes();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Perfil user = perfilServicios.findByNombre(auth.getName());
+        List<Descarte> listadoDescarte = perfilServicios.listarDescartes(user.getId(), idDescarte);
         modelAndView.addObject("listadoPerfiles", listadoDescarte);
-        modelAndView.setViewName("decartados");
+        modelAndView.setViewName("descartados");
         return modelAndView;	    	
     }
 	

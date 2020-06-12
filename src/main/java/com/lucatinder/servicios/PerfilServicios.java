@@ -20,7 +20,7 @@ public interface PerfilServicios {
 	public void agregarDescarte(Perfil perfil1, Perfil perfil2);
 	
 	public List<Contacto> listarContactos();
-	public List<Descarte> listarDescartes();
+	public List<Descarte> listarDescartes(int id_perfil1, int id_perfil2);
 	
 	// prueba
 	//public List<Perfil> listarPerfiles(Perfil perfil);
