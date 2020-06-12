@@ -1,6 +1,7 @@
 package com.lucatinder.control;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,4 +46,5 @@ public class ControlRest {
 		System.out.println(id_perfil);
 		return perfilServicios.listarContactos(id_perfil);
 	}
+	
 }
