@@ -106,22 +106,22 @@ public class Control {
 		return "redirect:/listado";
 	}
 	
-	@GetMapping("/listado/descartes/{idContacto}")
-	public String agregarDescarte(@PathVariable("idContacto") int idContacto) {
+	@GetMapping("/listado/descartes/{idDescarte}")
+	public String agregarDescarte(@PathVariable("idDescarte") int idDescarte) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Perfil user = perfilServicios.findByNombre(auth.getName());
 		logger.info(">>>>>>>>>>>>> Usuario logeado: " + user.getId());
-		logger.info("Le das dislike a " + idContacto);
-		perfilServicios.agregarDescarte(perfilServicios.get(user.getId()), perfilServicios.get(idContacto));
+		logger.info("Le das dislike a " + idDescarte);
+		perfilServicios.agregarDescarte(perfilServicios.get(user.getId()), perfilServicios.get(idDescarte));
 		return "redirect:/listado";
 	}
 	
-	@RequestMapping(value="/descartados/{idDescarte}", method = RequestMethod.GET)
-    public ModelAndView Descartes(@PathVariable("idDescarte") int idDescarte){
+	@RequestMapping(value="/descartados", method = RequestMethod.GET)
+    public ModelAndView Descartes(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Perfil user = perfilServicios.findByNombre(auth.getName());
-        List<Descarte> listadoDescarte = perfilServicios.listarDescartes(user.getId(), idDescarte);
+        List<Descarte> listadoDescarte = perfilServicios.listarDescartes(user.getId());
         modelAndView.addObject("listadoPerfiles", listadoDescarte);
         modelAndView.setViewName("descartados");
         return modelAndView;	    	

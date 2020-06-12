@@ -19,8 +19,8 @@ public interface PerfilServicios {
 	public void agregarContacto(Perfil perfil1, Perfil perfil2);
 	public void agregarDescarte(Perfil perfil1, Perfil perfil2);
 	
-	public List<Contacto> listarContactos();
-	public List<Descarte> listarDescartes(int id_perfil1, int id_perfil2);
+	public List<Contacto> listarContactos(int id_perfil);
+	public List<Descarte> listarDescartes(int id_perfil);
 	
 	// prueba
 	//public List<Perfil> listarPerfiles(Perfil perfil);

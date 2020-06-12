@@ -88,13 +88,13 @@ public class PerfilServiciosImp implements PerfilServicios {
 	}
 	
 	@Override
-	public List<Contacto> listarContactos(){
-		return perfilDAO.listarContactos();
+	public List<Contacto> listarContactos(int id_perfil){
+		return perfilDAO.listarContactos(id_perfil);
 	}
 	
 	@Override
-	public List<Descarte> listarDescartes(int id_perfil1, int id_perfil2){
-		return perfilDAO.listarDescartes(id_perfil1, id_perfil2);
+	public List<Descarte> listarDescartes(int id_perfil){
+		return perfilDAO.listarDescartes(id_perfil);
 	}
 
 	/*

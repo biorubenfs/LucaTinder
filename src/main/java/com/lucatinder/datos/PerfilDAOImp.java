@@ -43,16 +43,16 @@ public class PerfilDAOImp implements PerfilDAO{
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Contacto> listarContactos(){
-		String hql = "select * from Perfil where id_perfil in (select id_perfil2 from Contacto where id_perfil1=?)";
+	public List<Contacto> listarContactos(int id_perfil){
+		String hql = "From Perfil where id_perfil in (select id_perfil2 from Contacto where id_perfil1="+id_perfil+")";
 		return (List<Contacto>) entityManager.createQuery(hql).getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Descarte> listarDescartes(int id_perfil1, int id_perfil2){
-		String hql = "select * from Perfil where id_perfil in (select id_perfil2 from Descarte where id_perfil1=?)";
+	public List<Descarte> listarDescartes(int id_perfil){
+		String hql = "From Perfil where id_perfil in (select id_perfil2 from Descarte where id_perfil1="+id_perfil+")";
 		return (List<Descarte>) entityManager.createQuery(hql).getResultList();
 	}
 	/**
