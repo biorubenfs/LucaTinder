@@ -218,12 +218,14 @@ tr .titulo{
     position: relative;
     display: inline-block;
     border: 10px solid #f0f0f0;
-	
+	text-align: center;
+	padding-top: 9px;
 }
 
 .dislike i {
     color: #ff695b;
     font-size: 40px;
+	text-align: center;
 }
 
 .like {
@@ -235,9 +237,17 @@ tr .titulo{
     position: relative;
     display: inline-block;
     border: 10px solid #f0f0f0;
+	text-align: center;
+	padding-top: 13px;
 }
 
 .like i {
     color: #5de19c;
     font-size: 35px;
+	text-align: center;
+}
+
+.fa-heart > i, .fa-times > i {
+    position:relative;
+    top: calc(50%, 50%); /* 50% - 3/4 of icon height */
 }
