@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lucatinder.modelo.Contacto;
@@ -72,5 +73,11 @@ public class ControlRest {
 	public void agregarDescarte(@RequestBody Map<String, Integer> json) {
 		logger.info(">>>>>>>> agregado contacto REST  ");
 		perfilServicios.agregarContacto(perfilServicios.get(json.get("id_perfil1")), perfilServicios.get(json.get("id_perfil2")));			
+	}
+	
+	@RequestMapping(value="/login/{email}", method = RequestMethod.GET)
+	public Perfil logger(@PathVariable("email") String email) {
+		Perfil perfil=perfilServicios.findByEmail(email);
+		return perfil;
 	}
 }
