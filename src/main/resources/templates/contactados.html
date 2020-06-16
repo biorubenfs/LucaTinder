@@ -17,7 +17,7 @@
 	<script src="/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-      <title>LucaTinder</title>
+      <title>Listado de Contactos (diste like)</title>
 	  <link rel="shortcut icon" href="/resources/Imagenes/favicon.ico" />
    </head>
    <body>
@@ -30,14 +30,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav mr-auto"></ul>
                <ul class="nav-item dropdown">
-               	  <a style="user-select: none;" href="/contactos"><button class="btn hover">Contactos</button></a>
-                  <a style="user-select: none;" href="/descartados"><button class="btn hover">Descartados</button></a>
                   <a style="user-select: none;" href="/matches"><button class="btn hover">Matches</button></a>
+                  <a style="user-select: none;" href="/listado"><button class="btn hover">Hacer Match</button></a>
                </ul>
             </div>
          </nav>
 		 
-		 <br><h1>Perfiles recomendados para ti</h1><br>
+		 <img class="LogoDescartado" src="/resources/Imagenes/descartado.png" alt="Ruled Out!" title="Ruled Out"/>
 		  
 		 <div style="overflow-x:auto; text-align:center;">
 		  	 <table>
@@ -47,7 +46,7 @@
 					<th>Edad</th>
 					<th>Genero</th>
 					<th>Descripción</th>
-					<th>Match</th>
+					
 				</tr>
 				<tr th:each="perfil, status : ${listadoPerfiles}" class="contenido">
 					<!-- <td th:text="${perfil.foto}" style="color: black;"/> -->
@@ -55,10 +54,6 @@
 					<td th:text="${perfil.edad}" style="color: black; width: 30px; max-width: 30px;" />
 					<td th:text="${perfil.genero}" style="color: black; width: 50px; max-width: 50px;" />
 					<td th:text="${perfil.descripcion}" style="color: black; width: 300px; max-width: 300px;" />
-					<td class="botones" style="color: black; width: 80px; max-width: 80px;" >
-						<a class="like" style="outline:none" th:href="@{/listado/contactos/{idContacto} (idContacto=${perfil.id}) }"><i class="fa fa-heart" aria-hidden="true" ></i></a>
-						<a class="dislike"  style="outline:none" th:href="@{/listado/descartes/{idDescarte} (idDescarte=${perfil.id}) }"><i class="fa fa-times" aria-hidden="true"></i></a>
-					</td>
 				</tr>
 			</table>
 		</div>

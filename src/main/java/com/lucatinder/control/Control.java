@@ -127,4 +127,15 @@ public class Control {
         return modelAndView;	    	
     }
 	
+	@RequestMapping(value="/contactos", method = RequestMethod.GET)
+    public ModelAndView Contactos(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Perfil user = perfilServicios.findByNombre(auth.getName());
+        List<Contacto> listadoContactos = perfilServicios.listarContactos(user.getId());
+        modelAndView.addObject("listadoPerfiles", listadoContactos);
+        modelAndView.setViewName("contactados");
+        return modelAndView;	    	
+    }
+	
 }
