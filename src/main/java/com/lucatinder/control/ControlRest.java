@@ -36,6 +36,12 @@ public class ControlRest {
 		logger.info(">>>>>>>> listado perfiles REST /");
 		return perfilServicios.listarPerfil();
 	}
+	
+	@GetMapping("/listar/{email}")
+	public Perfil listarPerfil(@PathVariable("email") String email) {
+		logger.info(">>>>>>>> listado perfiles REST /");
+		return perfilServicios.findByEmail(email);
+	}
 
 	@PostMapping("/alta")
 	public Perfil agregarPerfil(@RequestBody Perfil perfil) {

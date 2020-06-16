@@ -19,5 +19,6 @@ public interface PerfilDAO {
 	
 	public List<Contacto> listarContactos(int id_perfil);
 	public List<Descarte> listarDescartes(int id_perfil);
+	
 
 }
