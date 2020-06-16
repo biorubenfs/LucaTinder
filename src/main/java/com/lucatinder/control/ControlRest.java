@@ -53,6 +53,7 @@ public class ControlRest {
 		return perfilServicios.listarContactos(id_perfil);
 	}
 	
+
 	/*
 	 * Hay que logearse primero para poder acceder a la consulta
 	 */
