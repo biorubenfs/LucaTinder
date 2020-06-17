@@ -25,7 +25,7 @@ public class TestCSS {
 	public void devuelveArchivoCss() throws Exception {
 		
 		this.mockMvc
-		.perform(get("/CSS/EstiloPaginaInicio.css"))
+		.perform(get("/CSS/gotham-rounded/EstiloPaginaInicio.css"))
 		.andDo(print())
 		.andExpect(status().isOk());
 	}

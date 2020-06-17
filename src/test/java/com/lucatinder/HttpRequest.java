@@ -66,7 +66,7 @@ public class HttpRequest {
     public void devuelveListadoPerfiles() throws Exception {
         assertThat(this.restTemplate.
         		getForObject("http://localhost:" + port + "/listado",String.class)).
-          contains("listado de perfiles");
+          contains("Perfiles recomendados");
     }
     
 }
