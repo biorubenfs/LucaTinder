@@ -72,13 +72,14 @@ public class ControlRest {
 	@PostMapping("/altaContacto")
 	public void agregarContacto(@RequestBody Map<String, Integer> json) {
 		logger.info(">>>>>>>> agregado contacto REST  ");
+		System.out.println(json);
 		perfilServicios.agregarContacto(perfilServicios.get(json.get("id_perfil1")), perfilServicios.get(json.get("id_perfil2")));			
 	}
 	
 	@PostMapping("/altaDescarte")
 	public void agregarDescarte(@RequestBody Map<String, Integer> json) {
-		logger.info(">>>>>>>> agregado contacto REST  ");
-		perfilServicios.agregarContacto(perfilServicios.get(json.get("id_perfil1")), perfilServicios.get(json.get("id_perfil2")));			
+		logger.info(">>>>>>>> agregado descarte REST  ");
+		perfilServicios.agregarDescarte(perfilServicios.get(json.get("id_perfil1")), perfilServicios.get(json.get("id_perfil2")));			
 	}
 	
 	@RequestMapping(value="/login/{email}", method = RequestMethod.GET)
