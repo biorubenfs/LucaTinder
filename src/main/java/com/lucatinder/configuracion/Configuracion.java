@@ -19,12 +19,6 @@ import com.lucatinder.servicios.DetallesPerfilServicios;
 @Configuration
 @EnableWebSecurity
 public class Configuracion extends WebSecurityConfigurerAdapter{
-
-	/*@Autowired
-	private DataSource dataSource;
-	
-	@Value("${spring.queries.users-query}")
-	private String perfilQuery;*/
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -38,19 +32,7 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 
 		.userDetailsService(servicio)
 		.passwordEncoder(bCryptPasswordEncoder);
-		
-		/*.inMemoryAuthentication()  
-        .withUser("user")  
-        .password("{noop}pass")  
-        .roles("USER");*/
-		
-			//.jdbcAuthentication()
-			//.usersByUsernameQuery(perfilQuery)
-			//.authoritiesByUsernameQuery(perfilQuery)
-			//.dataSource(dataSource);
-			//No se esta usando realmente porque lo genero desde Servicios
-			//.passwordEncoder();
-			 
+					 
 	}
 	
 	// Configura las url
@@ -81,32 +63,7 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
         .logout()
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
         .logoutSuccessUrl("/login").and().exceptionHandling()
-        .accessDeniedPage("/access-denied");
-			/*.authorizeRequests()
-			.antMatchers("/").permitAll()		
-			.antMatchers("/login").permitAll()
-			.antMatchers("/listado").permitAll()
-			.antMatchers("/registro").permitAll()
-			.anyRequest().authenticated()
-				.and()
-			.csrf()
-				.disable()
-				.formLogin().loginPage("/login")
-					.defaultSuccessUrl("/admin")
-					.failureUrl("/login?error=true")
-					.usernameParameter("nombre")
-					.passwordParameter("password")
-				.and()
-			.csrf()
-				.disable()
-				.headers().frameOptions().disable()
-				.and()
-			.logout()
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/")
-				.and()
-			.exceptionHandling()
-				.accessDeniedPage("/access-denied");*/
+        .accessDeniedPage("/access-denied");			
 	}
 	
 	@Override
