@@ -45,7 +45,7 @@ public class PerfilDAOImp implements PerfilDAO{
 	@Transactional
 	public List<Contacto> listarContactos(int id_perfil){
 		String hql = "From Perfil where id_perfil in (select id_perfil2 from Contacto where id_perfil1="+id_perfil+")";
-		return (List<Contacto>) entityManager.createQuery(hql).getResultList();
+		return (List<Contacto>) entityManager.createQuery(hql).setMaxResults(8).getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
