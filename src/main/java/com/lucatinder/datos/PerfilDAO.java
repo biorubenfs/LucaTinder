@@ -22,6 +22,6 @@ public interface PerfilDAO {
 	public List<Descarte> listarDescartes(int id_perfil);
 	
 	//public void agregarMatch(Perfil perfil1, Perfil perfil2);
-	public List<Juntos> listarMacth(int id_perfil);
+	public List<Juntos> listarMatch(int id_perfil);
 
 }
