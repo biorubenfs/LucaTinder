@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.lucatinder.modelo.Contacto;
 import com.lucatinder.modelo.Descarte;
+import com.lucatinder.modelo.Juntos;
 import com.lucatinder.modelo.Perfil;
 
 @Repository
@@ -59,22 +60,16 @@ public class PerfilDAOImp implements PerfilDAO{
 	 * Metodo que devuelve una lista con 5 perfiles de la base de datos
 	 * Debe evitar que en la lista devuelta se encuentre el propio usuario
 	 */
-	/*
+	
+	//Esto se tiene que convertir en el metor de listar match debido a la consulta
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Perfil> listarPerfiles(Perfil perfil) {
-		String hql = "FROM Perfil ORDER BY RAND()";
-		List<Perfil> lista = entityManager.createQuery(hql).setMaxResults(5).getResultList();
-		for(Perfil i : lista) {
-			if(i.getEmail().equalsIgnoreCase(perfil.getEmail()) {
-				lista.remove(perfil);
-			}
-		}
-		return lista;
+	public List<Juntos> listarMacth(int id_perfil) {
+		String sql="From Perfil where id_perfil in (select id_perfil2 from Juntos where id_perfil1="+id_perfil+")";
+		return (List<Juntos>)entityManager.createQuery(sql).getResultList();
+		//return (List<Match>)entityManager.createNativeQuery(sql).getResultList();
 	}
-	*/
-
 	
 	//Mejora del método anterior
 	
@@ -88,6 +83,16 @@ public class PerfilDAOImp implements PerfilDAO{
 		contacto.setId_perfil1(perfil1.getId());
 		contacto.setId_perfil2(perfil2.getId());
 		entityManager.merge(contacto);
+		
+		List<Contacto> l = this.listarContactos(perfil2.getId());
+		for(Contacto c:l) {
+			if (c.getId() == perfil1.getId()){
+				Juntos juntos=new Juntos();
+				juntos.setId_perfil1(perfil1.getId());
+				juntos.setId_perfil2(perfil2.getId());
+				entityManager.merge(juntos);
+			}
+		}
 	}
 	
 	@Override

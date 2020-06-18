@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lucatinder.modelo.Contacto;
 import com.lucatinder.modelo.Descarte;
+import com.lucatinder.modelo.Juntos;
 import com.lucatinder.modelo.Perfil;
 import com.lucatinder.servicios.PerfilServicios;
 
@@ -135,6 +136,17 @@ public class Control {
         List<Contacto> listadoContactos = perfilServicios.listarContactos(user.getId());
         modelAndView.addObject("listadoPerfiles", listadoContactos);
         modelAndView.setViewName("contactados");
+        return modelAndView;	    	
+    }
+	
+	@RequestMapping(value="/matches", method = RequestMethod.GET)
+    public ModelAndView Match(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Perfil user = perfilServicios.findByNombre(auth.getName());
+		List<Juntos> listadoMatch = perfilServicios.listarMacth(user.getId());
+        modelAndView.addObject("listadoPerfiles", listadoMatch);
+        modelAndView.setViewName("matches");
         return modelAndView;	    	
     }
 	
