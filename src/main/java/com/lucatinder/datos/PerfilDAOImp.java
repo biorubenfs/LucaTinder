@@ -45,7 +45,7 @@ public class PerfilDAOImp implements PerfilDAO{
 	@Override
 	@Transactional
 	public List<Contacto> listarContactos(int id_perfil){
-		String hql = "From Perfil where id_perfil in (select id_perfil2 from Contacto where id_perfil1="+id_perfil+")";
+		String hql = "From Perfil where id_perfil in (select id_perfil2 from Contacto where id_perfil1="+id_perfil+") ORDER BY RAND()";
 		return (List<Contacto>) entityManager.createQuery(hql).setMaxResults(8).getResultList();
 	}
 	
@@ -53,8 +53,8 @@ public class PerfilDAOImp implements PerfilDAO{
 	@Override
 	@Transactional
 	public List<Descarte> listarDescartes(int id_perfil){
-		String hql = "From Perfil where id_perfil in (select id_perfil2 from Descarte where id_perfil1="+id_perfil+")";
-		return (List<Descarte>) entityManager.createQuery(hql).getResultList();
+		String hql = "From Perfil where id_perfil in (select id_perfil2 from Descarte where id_perfil1="+id_perfil+") ORDER BY RAND()";
+		return (List<Descarte>) entityManager.createQuery(hql).setMaxResults(8).getResultList();
 	}
 	/**
 	 * Metodo que devuelve una lista con 5 perfiles de la base de datos
@@ -66,9 +66,8 @@ public class PerfilDAOImp implements PerfilDAO{
 	@Override
 	@Transactional
 	public List<Juntos> listarMatch(int id_perfil) {
-		String sql="From Perfil where id_perfil in (select id_perfil2 from Juntos where id_perfil1="+id_perfil+")";
-		return (List<Juntos>)entityManager.createQuery(sql).getResultList();
-		//return (List<Match>)entityManager.createNativeQuery(sql).getResultList();
+		String sql="From Perfil where id_perfil in (select id_perfil2 from Juntos where id_perfil1="+id_perfil+") ORDER BY RAND()";
+		return (List<Juntos>)entityManager.createQuery(sql).setMaxResults(8).getResultList();
 	}
 	
 	//Mejora del método anterior
