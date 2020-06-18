@@ -1,0 +1,289 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.volver  {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background: linear-gradient(to right, #ff3399 0%, #ff5050 100%);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+.volver:hover, a:hover {
+  background: linear-gradient(to left, #ff3399 0%, #ff5050 100%);
+}
+
+.header {
+  background: url("../Imagenes/PortadaLogin.webp") no-repeat center;
+  background-size: cover;
+  min-height: 100vh;
+}
+ 
+.header .navbar {
+  background-color: transparent !important;
+}
+
+.header .container {
+  border-radius: 5px;
+  background-color:rgba(233,233,233,0.75);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.tlogo { 
+	width: 250px; 
+	hanging-punctuation: 100px; 
+	margin: 0 auto; 
+	padding: 10px;
+}
+
+.tlogo img { 
+	width: 200px;
+	height: auto;
+}
+
+.LogoMatch{
+	width: 500px; 
+	height: auto;
+	margin: 0 auto; 
+	display:block;
+	padding: 50px;
+}
+
+.LogoDescartado{
+	width: 500px; 
+	height: auto;
+	margin: 0 auto; 
+	display:block;
+}
+
+header h1{
+	text-align: center;
+	color: white;
+	font-size: 4vw;
+	user-select: none;
+}
+
+header p{
+	text-align: center;
+	color: white;
+	font-size: 1vw;
+	user-select: none;
+}
+
+.btn {
+  background-color: white; 
+  color: deeppink; 
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #ff3399 0%, #ff5050 100%);
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=email], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=number], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=file], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=password], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.center {
+  color: white;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left:100px;
+  padding-right:100px;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  border: 0px;
+  background: linear-gradient(to right, #ff3399 0%, #ff5050 100%);
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  border-radius: 50px;
+  transform: translate(-50%, 80%);
+}
+
+.center:hover {
+  color: white;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left:100px;
+  padding-right:100px;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+  border: 0px;
+  background: linear-gradient(to left, #ff3399 0%, #ff5050 100%);
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  border-radius: 50px;
+  transform: translate(-50%, 80%);
+}
+
+/* TABLA */
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 80%;
+  margin: 0 auto;
+}
+
+table .titulo{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 80%;
+  background: linear-gradient(to right, #ff3399 0%, #ff5050 100%);
+  margin: 0 auto;
+}
+
+table .contenido{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 80%;
+  background: #f2f2f2;
+  margin: 0 auto;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+  color: white;
+  user-select: none
+}
+
+tr{
+	background-color: #f2f2f2;
+}
+
+tr .titulo{
+	background-color: #f2f2f2;
+}
+
+/* BOTONES */
+
+.dislike {
+    background-color: #fff;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+	outline:none;
+    position: relative;
+    display: inline-block;
+    border: 10px solid #f0f0f0;
+	text-align: center;
+	padding-top: 9px;
+}
+
+.dislike i {
+    color: #ff695b;
+    font-size: 40px;
+	text-align: center;
+}
+
+.like {
+    background-color: #fff;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+	outline:none;
+    position: relative;
+    display: inline-block;
+    border: 10px solid #f0f0f0;
+	text-align: center;
+	padding-top: 13px;
+}
+
+.like i {
+    color: #5de19c;
+    font-size: 35px;
+	text-align: center;
+}
+
+.fa-heart > i, .fa-times > i {
+    position:relative;
+    top: calc(50%, 50%); /* 50% - 3/4 of icon height */
+}
