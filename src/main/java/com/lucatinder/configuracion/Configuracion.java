@@ -49,6 +49,8 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 		.antMatchers( "/rperfil/listar").permitAll()//podriamos borrar estas dos lineas
 		.antMatchers( "/rperfil/alta").permitAll()
 		.antMatchers( "/rperfil/**").permitAll()
+		.antMatchers( "/swagger-ui").permitAll()
+
 		
 		.antMatchers( "/listado").hasAnyAuthority("ADMIN")
         .anyRequest()
