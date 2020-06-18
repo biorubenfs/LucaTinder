@@ -144,7 +144,7 @@ public class Control {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Perfil user = perfilServicios.findByNombre(auth.getName());
-		List<Juntos> listadoMatch = perfilServicios.listarMacth(user.getId());
+		List<Juntos> listadoMatch = perfilServicios.listarMatch(user.getId());
         modelAndView.addObject("listadoPerfiles", listadoMatch);
         modelAndView.setViewName("matches");
         return modelAndView;	    	

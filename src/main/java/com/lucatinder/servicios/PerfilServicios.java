@@ -23,7 +23,7 @@ public interface PerfilServicios {
 	public List<Contacto> listarContactos(int id_perfil);
 	public List<Descarte> listarDescartes(int id_perfil);
 	
-	public List<Juntos> listarMacth(int id_perfil);
+	public List<Juntos> listarMatch(int id_perfil);
 	
 	// prueba
 	//public List<Perfil> listarPerfiles(Perfil perfil);
