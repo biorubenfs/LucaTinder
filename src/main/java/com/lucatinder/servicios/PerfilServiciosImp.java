@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.lucatinder.datos.PerfilDAO;
 import com.lucatinder.modelo.Contacto;
 import com.lucatinder.modelo.Descarte;
+import com.lucatinder.modelo.Juntos;
 import com.lucatinder.modelo.Perfil;
 import com.lucatinder.modelo.Rol;
 import com.lucatinder.repositorio.PerfilRepositorio;
@@ -96,6 +97,11 @@ public class PerfilServiciosImp implements PerfilServicios {
 	public List<Descarte> listarDescartes(int id_perfil){
 		return perfilDAO.listarDescartes(id_perfil);
 	}
+	
+	@Override
+	public List<Juntos> listarMacth(int id_perfil){
+		return perfilDAO.listarMacth(id_perfil);
+	}
 
 	/*
 	@Override
@@ -115,6 +121,6 @@ public class PerfilServiciosImp implements PerfilServicios {
 		perfilDAO.agregarDescarte(perfil1, perfil2);
 		
 	}
-	
+		
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.lucatinder.modelo.Contacto;
 import com.lucatinder.modelo.Descarte;
+import com.lucatinder.modelo.Juntos;
 import com.lucatinder.modelo.Perfil;
 
 public interface PerfilDAO {
@@ -20,5 +21,7 @@ public interface PerfilDAO {
 	public List<Contacto> listarContactos(int id_perfil);
 	public List<Descarte> listarDescartes(int id_perfil);
 	
+	//public void agregarMatch(Perfil perfil1, Perfil perfil2);
+	public List<Juntos> listarMacth(int id_perfil);
 
 }
