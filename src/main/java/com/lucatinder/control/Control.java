@@ -150,4 +150,20 @@ public class Control {
         return modelAndView;	    	
     }
 	
+	@GetMapping("/listado/perfil/{idPerfil}")
+	public String detalles(@PathVariable("idPerfil") int idPerfil) {
+		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<ENTRA<<<<<<<<<<<<<<<<<<<<<");
+		//perfilServicios.detalle(idPerfil);
+		perfilServicios.get(idPerfil);
+		return "perfil";
+		/*List<Perfil> lista = perfilServicios.listarPerfil();
+		for(Perfil p:lista) {
+			if(p.getId() == idPerfil) {
+				Perfil per=perfilServicios.detalle(idPerfil);
+				return "perfil";
+			}
+		}
+		return "redirect:/listado";*/
+	}
+	
 }
