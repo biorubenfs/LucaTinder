@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+   <head>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="icon" type="image/png" 		href="resources/Imagenes/icons/favicon.ico"/>
+		<link rel="stylesheet" type="text/css"	href="resources/CSS/EstiloPaginaPerfil.css" >
+		<link rel="stylesheet" type="text/css" 	href="resources/vendor/bootstrap/css/bootstrap.min.css">
+		<link rel="shortcut icon" 				href="resources/Imagenes/favicon.ico" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" 	href="resources/fonts/iconic/css/material-design-iconic-font.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+				integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+				crossorigin="anonymous">
+
+		<script src="resources/vendor/jquery/jquery-3.2.1.min.js"></script>
+		<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" 
+				  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" 
+				  crossorigin="anonymous"></script>
+
+		<title>LucaTinder</title>
+   </head>
+   <body>
+      <header class="header">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a style="user-select: none" href="/"><img class="tlogo" src="resources/Imagenes/Logo-LucaTinderBN.webp" alt="Tinder Logo" title="Inicio"/></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto"></ul>
+               <ul class="nav-item dropdown" style="display: inline;">
+                  <a style="user-select: none;" href="/descartados"><button class="btn hover">Descartados</button></a>
+                  <a style="user-select: none;" href="/matches"><button class="btn hover">Matches</button></a>
+               </ul>
+            </div>
+         </nav>
+		 
+		 <br><h1>Perfiles recomendados para ti</h1><br>
+		  
+		 <div style="overflow-x:auto; text-align:center;">
+		  	 <div class="card">
+			  <img src="resources/Imagenes/avatar.webp" alt="Avatar" style="width:100%">
+			  <h2><td th:text="${perfil.nombre}"/></h2>
+			  <p style="color: black"><td th:text="${perfil.edad}"/></p> 
+			  <p style="color: black"><td th:text="${perfil.genero}"/></p> 
+			  <p class="title"><td th:text="${perfil.descripcion}"/></p>
+			  <a style="user-select: none;" href="/listado"><button class="volver">Volver</button></a>
+			  
+			</div>
+		</div>
+		  
+	  </header>
+	   
+   </body>
+</html>
