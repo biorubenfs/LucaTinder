@@ -49,7 +49,6 @@ public class Control {
 		return "inicio";
 	}
 	
-	
 	@RequestMapping(value="/registro", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -149,5 +148,12 @@ public class Control {
         modelAndView.setViewName("matches");
         return modelAndView;	    	
     }
+	
+	@GetMapping("/listado/perfil/{idPerfil}")
+	public String detalles(@PathVariable("idPerfil") int idPerfil, Model model) {
+		Perfil perfil = perfilServicios.get(idPerfil);
+		model.addAttribute("perfil", perfil);	
+		return "perfil";
+	}
 	
 }
