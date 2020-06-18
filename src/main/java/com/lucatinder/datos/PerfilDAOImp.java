@@ -65,7 +65,7 @@ public class PerfilDAOImp implements PerfilDAO{
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Juntos> listarMacth(int id_perfil) {
+	public List<Juntos> listarMatch(int id_perfil) {
 		String sql="From Perfil where id_perfil in (select id_perfil2 from Juntos where id_perfil1="+id_perfil+")";
 		return (List<Juntos>)entityManager.createQuery(sql).getResultList();
 		//return (List<Match>)entityManager.createNativeQuery(sql).getResultList();
