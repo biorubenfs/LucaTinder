@@ -77,6 +77,7 @@ public class PerfilDAOImp implements PerfilDAO{
 		return entityManager.find(Perfil.class, id);
 	}
 	
+	
 	@Override
 	public void agregarContacto(Perfil perfil1, Perfil perfil2) {
 		Contacto contacto = new Contacto();

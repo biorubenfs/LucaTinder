@@ -49,7 +49,6 @@ public class Control {
 		return "inicio";
 	}
 	
-	
 	@RequestMapping(value="/registro", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -151,19 +150,12 @@ public class Control {
     }
 	
 	@GetMapping("/listado/perfil/{idPerfil}")
-	public String detalles(@PathVariable("idPerfil") int idPerfil) {
-		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<ENTRA<<<<<<<<<<<<<<<<<<<<<");
-		//perfilServicios.detalle(idPerfil);
-		perfilServicios.get(idPerfil);
+
+	public String detalles(@PathVariable("idPerfil") int idPerfil, Model model) {
+		Perfil perfil = perfilServicios.get(idPerfil);
+		model.addAttribute("perfil", perfil);	
 		return "perfil";
-		/*List<Perfil> lista = perfilServicios.listarPerfil();
-		for(Perfil p:lista) {
-			if(p.getId() == idPerfil) {
-				Perfil per=perfilServicios.detalle(idPerfil);
-				return "perfil";
-			}
-		}
-		return "redirect:/listado";*/
+
 	}
 	
 }
