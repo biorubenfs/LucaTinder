@@ -18,62 +18,48 @@ import com.lucatinder.servicios.DetallesPerfilServicios;
 
 @Configuration
 @EnableWebSecurity
-public class Configuracion extends WebSecurityConfigurerAdapter{
-	
+public class Configuracion extends WebSecurityConfigurerAdapter {
+
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
 	@Autowired
 	private DetallesPerfilServicios servicio;
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 
-		.userDetailsService(servicio)
-		.passwordEncoder(bCryptPasswordEncoder);
-					 
+				.userDetailsService(servicio).passwordEncoder(bCryptPasswordEncoder);
+
 	}
-	
+
 	// Configura las url
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http
-		
-		.authorizeRequests() 
-		.antMatchers( "/").permitAll()
-		.antMatchers( "/inicio").permitAll()
-		.antMatchers( "/registro").permitAll()		
-		.antMatchers( "/login").permitAll()
-		.antMatchers( "/matches").permitAll()
-		.antMatchers( "/rperfil/listar").permitAll()//podriamos borrar estas dos lineas
-		.antMatchers( "/rperfil/alta").permitAll()
-		.antMatchers( "/rperfil/**").permitAll()
-		
-		.antMatchers( "/listado").hasAnyAuthority("ADMIN")
-        .anyRequest()
-        .authenticated().and().csrf().disable()
-        .formLogin()
-        .loginPage("/login")
-        .failureUrl("/login?error=true")
-        .defaultSuccessUrl("/listado")
-        .usernameParameter("email")
-        .passwordParameter("password")
-        .and()
-        .logout()
-        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-        .logoutSuccessUrl("/login").and().exceptionHandling()
-        .accessDeniedPage("/access-denied");			
+
+				.authorizeRequests().antMatchers("/").permitAll().antMatchers("/inicio").permitAll()
+				.antMatchers("/registro").permitAll().antMatchers("/login").permitAll().antMatchers("/matches")
+				.permitAll().antMatchers("/rperfil/listar").permitAll()// podriamos borrar estas dos lineas
+				.antMatchers("/rperfil/alta").permitAll().antMatchers("/rperfil/**").permitAll()
+				.antMatchers("/swagger-ui/**").permitAll()
+
+				.antMatchers("/listado").hasAnyAuthority("ADMIN").anyRequest().authenticated().and().csrf().disable()
+				.formLogin().loginPage("/login").failureUrl("/login?error=true").defaultSuccessUrl("/listado")
+				.usernameParameter("email").passwordParameter("password").and().logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").and()
+				.exceptionHandling().accessDeniedPage("/access-denied");
 	}
-	
+
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web
-			.ignoring()
-			.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/v2/api-docs", "/configuration/ui", 
+	            "/swagger-resources/**", "/configuration/**", "/swagger-ui.html"
+	            , "/webjars/**", "/csrf", "/");
 	}
-	
+
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		System.out.println("--- Inside passwordEncoder");
