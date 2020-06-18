@@ -42,7 +42,7 @@
 		 <div style="overflow-x:auto; text-align:center;">
 		  	 <table>
 				<tr class="titulo">
-					<!-- <th>Foto</th> -->
+					<th>Ver perfil</th>
 					<th>Nombre</th>
 					<th>Edad</th>
 					<th>Genero</th>
@@ -50,7 +50,7 @@
 					<th>Match</th>
 				</tr>
 				<tr th:each="perfil, status : ${listadoPerfiles}" class="contenido">
-					<!-- <td th:text="${perfil.foto}" style="color: black;"/> -->
+					<td style="width: 20px; max-width: 20px;" ><a th:href="@{/listado/perfil/{idPerfil} (idPerfil=${perfil.id}) }" ><i class="fa fa-user" aria-hidden="true"></i> Link</a></td>
 					<td th:text="${perfil.nombre}" style="color: black; width: 30px; max-width: 30px;" />
 					<td th:text="${perfil.edad}" style="color: black; width: 30px; max-width: 30px;" />
 					<td th:text="${perfil.genero}" style="color: black; width: 50px; max-width: 50px;" />
