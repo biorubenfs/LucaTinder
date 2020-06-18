@@ -45,7 +45,8 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 		.antMatchers( "/").permitAll()
 		.antMatchers( "/inicio").permitAll()
 		.antMatchers( "/registro").permitAll()		
-		.antMatchers( "/login").permitAll()		
+		.antMatchers( "/login").permitAll()
+		.antMatchers( "/matches").permitAll()
 		.antMatchers( "/rperfil/listar").permitAll()//podriamos borrar estas dos lineas
 		.antMatchers( "/rperfil/alta").permitAll()
 		.antMatchers( "/rperfil/**").permitAll()

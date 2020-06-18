@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.lucatinder.modelo.Contacto;
 import com.lucatinder.modelo.Descarte;
+import com.lucatinder.modelo.Juntos;
 import com.lucatinder.modelo.Perfil;
 
 public interface PerfilServicios {
@@ -22,6 +23,7 @@ public interface PerfilServicios {
 	public List<Contacto> listarContactos(int id_perfil);
 	public List<Descarte> listarDescartes(int id_perfil);
 	
+	public List<Juntos> listarMacth(int id_perfil);
 	
 	// prueba
 	//public List<Perfil> listarPerfiles(Perfil perfil);
