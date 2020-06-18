@@ -25,5 +25,4 @@ public interface PerfilDAO {
 
 	public List<Juntos> listarMatch(int id_perfil);
 
-
 }
