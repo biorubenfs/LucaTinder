@@ -100,7 +100,7 @@ public class PerfilServiciosImp implements PerfilServicios {
 	
 	@Override
 	public List<Juntos> listarMatch(int id_perfil){
-		return perfilDAO.listarMacth(id_perfil);
+		return perfilDAO.listarMatch(id_perfil);
 	}
 
 	/*
