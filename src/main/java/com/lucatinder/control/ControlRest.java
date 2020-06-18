@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lucatinder.modelo.Contacto;
 import com.lucatinder.modelo.Descarte;
+import com.lucatinder.modelo.Juntos;
 import com.lucatinder.modelo.Perfil;
 import com.lucatinder.servicios.PerfilServicios;
 
@@ -86,5 +87,11 @@ public class ControlRest {
 	public Perfil logger(@PathVariable("email") String email) {
 		Perfil perfil=perfilServicios.findByEmail(email);
 		return perfil;
+	}
+	
+	@GetMapping("/listarMatches/{idMatch}")
+	public Collection<Juntos> listarMatches(@PathVariable("idMatch") int id_perfil){
+		logger.info(">>>>>>>> listado matches REST /");
+		return perfilServicios.listarMatch(id_perfil);
 	}
 }
